@@ -38,9 +38,7 @@
 			class="px-4 py-3 flex flex-row justify-between items-center"
 		>
 			<div v-if="chapters || loading">
-				<p class="text-[11px] leading-4 opacity-70">
-					Now playing:
-				</p>
+				
 				<p>
 					{{
 						loading
@@ -55,6 +53,9 @@
 									)
 							  ].name
 					}}
+				</p>
+				<p class="text-[11px] leading-4 opacity-70">
+					{{currentQariData.name}}
 				</p>
 			</div>
 			<div>
@@ -222,6 +223,12 @@
 import { Howl } from "howler";
 import chapters from "../db/chapters.json"
 
+const currentQariData = ref()
+onMounted(()=>{
+	if (localStorage.getItem("qari-store")){
+		currentQariData.value = JSON.parse(localStorage.getItem("qari-store"))
+	}
+})
 const sound = ref(null);
 const currentPlayingId = ref(0);
 const pause = ref(false);
@@ -245,7 +252,13 @@ function playAudio(id) {
 		currentDuration.value = 0;
 		currentSeek.value = 0;
 		currentPlayingId.value = id;
-		const url = `https://server10.mp3quran.net/ajm/${num2}.mp3`;
+		let url;
+		if(currentQariData.value){
+			currentQariData.value = JSON.parse(localStorage.getItem("qari-store"))
+			url = `${currentQariData.value.link}${num2}.mp3`;
+		}else{
+			url = `https://server10.mp3quran.net/ajm/${num2}.mp3`;
+		}
 		sound.value = new Howl({
 			src: [url],
 			html5: true,
