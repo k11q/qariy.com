@@ -2,10 +2,10 @@
 	<template v-if="chapters">
 		<div
 			v-for="(i, index) in chapters.suwar"
-			:class="`flex flex-none gap-6 items-center justify-center bg-neutral-900 px-6 py-3 cursor-default hover:bg-neutral-800 ${
+			:class="`flex flex-none gap-6 items-center justify-center  px-6 py-3 cursor-default ${
 				i.id == audioPlaying
-					? 'opacity-60 bg-neutral-800'
-					: ''
+					? 'opacity-60 bg-neutral-500'
+					: 'bg-neutral-800/80 even:bg-neutral-700/50 hover:bg-sky-200/80 [&>div>p]:hover:bg-sky-100/90 hover:text-neutral-900 '
 			}`"
 			@click="()=>{i.id != audioPlaying ? handleFetch(i.id) : ''}"
 		>
@@ -22,7 +22,7 @@
 		</div>
 	</template>
 	<div
-		class="z-[999] sticky bottom-0 bg-neutral-800 border-t border-neutral-700"
+		class="z-[999] sticky bottom-0 bg-neutral-700 border-t border-neutral-600"
 		v-show="audioPlaying"
 	>
 		<div class="px-4 py-3 flex flex-row">
@@ -70,7 +70,7 @@
 						@click="
 							() => {audioPlaying ? playPrevSurah(parseInt(audioPlaying)) : ''}
 						"
-						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border border-neutral-700 aspect-square"
+						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-600 aspect-square"
 					>
 						<div
 							class="opacity-70 -mt-[0.5px] flex"
@@ -89,7 +89,7 @@
 									: pauseAudio();
 							}
 						"
-						class="h-14 w-14 relative flex-none flex items-center justify-center rounded-full border border-neutral-700 aspect-square"
+						class="h-14 w-14 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-600 aspect-square"
 					>
 						<div
 							class="-mt-0.5 ml-[1px]"
@@ -114,7 +114,7 @@
 						@click="
 							() => {audioPlaying ? playNextSurah(parseInt(audioPlaying)) : ''}
 						"
-						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border border-neutral-700 aspect-square"
+						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-600 aspect-square"
 					>
 						<div
 							class="opacity-70 -mt-[0.5px] flex"
