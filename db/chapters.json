@@ -6,7 +6,7 @@
 			"start_page": 1,
 			"end_page": 1,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 42.8}]
 		},
 		{
 			"id": 2,
@@ -22,7 +22,7 @@
 			"start_page": 50,
 			"end_page": 76,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 4313.3}]
 		},
 		{
 			"id": 4,
@@ -30,7 +30,7 @@
 			"start_page": 77,
 			"end_page": 106,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 4783}]
 		},
 		{
 			"id": 5,
@@ -38,7 +38,7 @@
 			"start_page": 106,
 			"end_page": 127,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 3191.1}]
 		},
 		{
 			"id": 6,
@@ -46,7 +46,7 @@
 			"start_page": 128,
 			"end_page": 150,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 3426.5}]
 		},
 		{
 			"id": 7,
@@ -54,7 +54,7 @@
 			"start_page": 151,
 			"end_page": 176,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 3587.2}]
 		},
 		{
 			"id": 8,
@@ -62,7 +62,7 @@
 			"start_page": 177,
 			"end_page": 186,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1478.2}]
 		},
 		{
 			"id": 9,
@@ -70,7 +70,7 @@
 			"start_page": 187,
 			"end_page": 207,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 2867.4}]
 		},
 		{
 			"id": 10,
@@ -78,7 +78,7 @@
 			"start_page": 208,
 			"end_page": 221,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 2165.7}]
 		},
 		{
 			"id": 11,
@@ -86,7 +86,7 @@
 			"start_page": 221,
 			"end_page": 235,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 2265.5}]
 		},
 		{
 			"id": 12,
@@ -94,7 +94,7 @@
 			"start_page": 235,
 			"end_page": 248,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 2134.2}]
 		},
 		{
 			"id": 13,
@@ -102,7 +102,7 @@
 			"start_page": 249,
 			"end_page": 255,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1016.3}]
 		},
 		{
 			"id": 14,
@@ -110,7 +110,7 @@
 			"start_page": 255,
 			"end_page": 261,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1019.6}]
 		},
 		{
 			"id": 15,
@@ -118,7 +118,7 @@
 			"start_page": 262,
 			"end_page": 267,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1019.4}]
 		},
 		{
 			"id": 16,
@@ -126,7 +126,7 @@
 			"start_page": 267,
 			"end_page": 281,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 2270.8}]
 		},
 		{
 			"id": 17,
@@ -134,7 +134,7 @@
 			"start_page": 282,
 			"end_page": 293,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1650.3}]
 		},
 		{
 			"id": 18,
@@ -142,7 +142,7 @@
 			"start_page": 293,
 			"end_page": 304,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1650.3}]
 		},
 		{
 			"id": 19,
@@ -150,15 +150,15 @@
 			"start_page": 305,
 			"end_page": 312,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1099.1}]
 		},
 		{
 			"id": 20,
-			"name": "Ta\u00adHa ",
+			"name": "Ta-Ha ",
 			"start_page": 312,
 			"end_page": 321,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1499.1}]
 		},
 		{
 			"id": 21,
@@ -166,7 +166,7 @@
 			"start_page": 322,
 			"end_page": 331,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1472}]
 		},
 		{
 			"id": 22,
@@ -174,7 +174,7 @@
 			"start_page": 332,
 			"end_page": 341,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1559.9}]
 		},
 		{
 			"id": 23,
@@ -182,7 +182,7 @@
 			"start_page": 342,
 			"end_page": 349,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1235.3}]
 		},
 		{
 			"id": 24,
@@ -190,7 +190,7 @@
 			"start_page": 350,
 			"end_page": 359,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1626.8}]
 		},
 		{
 			"id": 25,
@@ -198,7 +198,7 @@
 			"start_page": 359,
 			"end_page": 366,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1027.5}]
 		},
 		{
 			"id": 26,
@@ -206,7 +206,7 @@
 			"start_page": 367,
 			"end_page": 376,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1712.1}]
 		},
 		{
 			"id": 27,
@@ -214,7 +214,7 @@
 			"start_page": 377,
 			"end_page": 385,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1471.3}]
 		},
 		{
 			"id": 28,
@@ -222,7 +222,7 @@
 			"start_page": 385,
 			"end_page": 396,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1709.8}]
 		},
 		{
 			"id": 29,
@@ -230,15 +230,15 @@
 			"start_page": 396,
 			"end_page": 404,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1274.2}]
 		},
 		{
 			"id": 30,
-			"name": "Ar\u00adRoom",
+			"name": "Ar-Rum",
 			"start_page": 404,
 			"end_page": 410,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1069.8}]
 		},
 		{
 			"id": 31,
@@ -246,23 +246,23 @@
 			"start_page": 411,
 			"end_page": 414,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 654.8}]
 		},
 		{
 			"id": 32,
-			"name": "As\u00adSajdah ",
+			"name": "As-Sajdah ",
 			"start_page": 415,
 			"end_page": 417,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 495.5}]
 		},
 		{
 			"id": 33,
-			"name": "Al\u00adAhzab ",
+			"name": "Al-Ahzab ",
 			"start_page": 418,
 			"end_page": 427,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1482.5}]
 		},
 		{
 			"id": 34,
@@ -270,7 +270,7 @@
 			"start_page": 428,
 			"end_page": 434,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1047.4}]
 		},
 		{
 			"id": 35,
@@ -278,7 +278,7 @@
 			"start_page": 434,
 			"end_page": 440,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 892.1}]
 		},
 		{
 			"id": 36,
@@ -286,7 +286,7 @@
 			"start_page": 440,
 			"end_page": 445,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 807.3}]
 		},
 		{
 			"id": 37,
@@ -294,7 +294,7 @@
 			"start_page": 446,
 			"end_page": 452,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1127.8}]
 		},
 		{
 			"id": 38,
@@ -302,7 +302,7 @@
 			"start_page": 453,
 			"end_page": 458,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1078}]
 		},
 		{
 			"id": 39,
@@ -310,7 +310,7 @@
 			"start_page": 458,
 			"end_page": 467,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1615.6}]
 		},
 		{
 			"id": 40,
@@ -318,7 +318,7 @@
 			"start_page": 467,
 			"end_page": 476,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1511.2}]
 		},
 		{
 			"id": 41,
@@ -326,7 +326,7 @@
 			"start_page": 477,
 			"end_page": 482,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 962.9}]
 		},
 		{
 			"id": 42,
@@ -334,7 +334,7 @@
 			"start_page": 483,
 			"end_page": 489,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 999.1}]
 		},
 		{
 			"id": 43,
@@ -342,7 +342,7 @@
 			"start_page": 489,
 			"end_page": 495,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 1191.4}]
 		},
 		{
 			"id": 44,
@@ -350,7 +350,7 @@
 			"start_page": 496,
 			"end_page": 498,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 575.9}]
 		},
 		{
 			"id": 45,
@@ -358,7 +358,7 @@
 			"start_page": 499,
 			"end_page": 502,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 610.7}]
 		},
 		{
 			"id": 46,
@@ -366,7 +366,7 @@
 			"start_page": 502,
 			"end_page": 506,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 886.1}]
 		},
 		{
 			"id": 47,
@@ -374,7 +374,7 @@
 			"start_page": 507,
 			"end_page": 510,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 747.7}]
 		},
 		{
 			"id": 48,
@@ -382,7 +382,7 @@
 			"start_page": 511,
 			"end_page": 515,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 707.4}]
 		},
 		{
 			"id": 49,
@@ -390,7 +390,7 @@
 			"start_page": 515,
 			"end_page": 517,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 494.4}]
 		},
 		{
 			"id": 50,
@@ -398,7 +398,7 @@
 			"start_page": 518,
 			"end_page": 520,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 583.1}]
 		},
 		{
 			"id": 51,
@@ -406,7 +406,7 @@
 			"start_page": 520,
 			"end_page": 523,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 390.6}]
 		},
 		{
 			"id": 52,
@@ -414,7 +414,7 @@
 			"start_page": 523,
 			"end_page": 525,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 349.3}]
 		},
 		{
 			"id": 53,
@@ -422,7 +422,7 @@
 			"start_page": 526,
 			"end_page": 528,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 350.6}]
 		},
 		{
 			"id": 54,
@@ -430,7 +430,7 @@
 			"start_page": 528,
 			"end_page": 531,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 353.9}]
 		},
 		{
 			"id": 55,
@@ -438,7 +438,7 @@
 			"start_page": 531,
 			"end_page": 534,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 478.2}]
 		},
 		{
 			"id": 56,
@@ -446,7 +446,7 @@
 			"start_page": 534,
 			"end_page": 537,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 473.2}]
 		},
 		{
 			"id": 57,
@@ -454,7 +454,7 @@
 			"start_page": 537,
 			"end_page": 541,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 761.2}]
 		},
 		{
 			"id": 58,
@@ -462,7 +462,7 @@
 			"start_page": 542,
 			"end_page": 545,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 648.6}]
 		},
 		{
 			"id": 59,
@@ -470,7 +470,7 @@
 			"start_page": 545,
 			"end_page": 548,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 699.2}]
 		},
 		{
 			"id": 60,
@@ -478,7 +478,7 @@
 			"start_page": 549,
 			"end_page": 551,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 513.4}]
 		},
 		{
 			"id": 61,
@@ -486,7 +486,7 @@
 			"start_page": 551,
 			"end_page": 552,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 299.6}]
 		},
 		{
 			"id": 62,
@@ -494,7 +494,7 @@
 			"start_page": 553,
 			"end_page": 554,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 290.8}]
 		},
 		{
 			"id": 63,
@@ -502,7 +502,7 @@
 			"start_page": 554,
 			"end_page": 555,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 354.4}]
 		},
 		{
 			"id": 64,
@@ -510,7 +510,7 @@
 			"start_page": 556,
 			"end_page": 557,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 399.5}]
 		},
 		{
 			"id": 65,
@@ -518,7 +518,7 @@
 			"start_page": 558,
 			"end_page": 559,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 413.7}]
 		},
 		{
 			"id": 66,
@@ -526,7 +526,7 @@
 			"start_page": 560,
 			"end_page": 561,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 402.7}]
 		},
 		{
 			"id": 67,
@@ -534,7 +534,7 @@
 			"start_page": 562,
 			"end_page": 564,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 477}]
 		},
 		{
 			"id": 68,
@@ -542,7 +542,7 @@
 			"start_page": 564,
 			"end_page": 566,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 470.6}]
 		},
 		{
 			"id": 69,
@@ -550,7 +550,7 @@
 			"start_page": 566,
 			"end_page": 568,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 494.5}]
 		},
 		{
 			"id": 70,
@@ -558,7 +558,7 @@
 			"start_page": 568,
 			"end_page": 570,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 425.9}]
 		},
 		{
 			"id": 71,
@@ -566,7 +566,7 @@
 			"start_page": 570,
 			"end_page": 571,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 313.9}]
 		},
 		{
 			"id": 72,
@@ -574,7 +574,7 @@
 			"start_page": 572,
 			"end_page": 573,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 382.1}]
 		},
 		{
 			"id": 73,
@@ -582,7 +582,7 @@
 			"start_page": 574,
 			"end_page": 575,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 314.9}]
 		},
 		{
 			"id": 74,
@@ -590,7 +590,7 @@
 			"start_page": 575,
 			"end_page": 577,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 474.2}]
 		},
 		{
 			"id": 75,
@@ -598,7 +598,7 @@
 			"start_page": 577,
 			"end_page": 578,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 254}]
 		},
 		{
 			"id": 76,
@@ -606,7 +606,7 @@
 			"start_page": 578,
 			"end_page": 580,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 406.5}]
 		},
 		{
 			"id": 77,
@@ -614,7 +614,7 @@
 			"start_page": 580,
 			"end_page": 581,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 261.9}]
 		},
 		{
 			"id": 78,
@@ -622,7 +622,7 @@
 			"start_page": 582,
 			"end_page": 583,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" :268.5}]
 		},
 		{
 			"id": 79,
@@ -630,7 +630,7 @@
 			"start_page": 583,
 			"end_page": 584,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 216.1}]
 		},
 		{
 			"id": 80,
@@ -638,7 +638,7 @@
 			"start_page": 585,
 			"end_page": 586,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 167.3}]
 		},
 		{
 			"id": 81,
@@ -646,7 +646,7 @@
 			"start_page": 586,
 			"end_page": 586,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 115.1}]
 		},
 		{
 			"id": 82,
@@ -654,7 +654,7 @@
 			"start_page": 587,
 			"end_page": 587,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 94}]
 		},
 		{
 			"id": 83,
@@ -662,7 +662,7 @@
 			"start_page": 587,
 			"end_page": 589,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 212.4}]
 		},
 		{
 			"id": 84,
@@ -670,7 +670,7 @@
 			"start_page": 589,
 			"end_page": 590,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 132.9}]
 		},
 		{
 			"id": 85,
@@ -678,7 +678,7 @@
 			"start_page": 590,
 			"end_page": 590,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 142.2}]
 		},
 		{
 			"id": 86,
@@ -686,7 +686,7 @@
 			"start_page": 591,
 			"end_page": 591,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 73.5}]
 		},
 		{
 			"id": 87,
@@ -694,7 +694,7 @@
 			"start_page": 591,
 			"end_page": 592,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 80.3}]
 		},
 		{
 			"id": 88,
@@ -702,7 +702,7 @@
 			"start_page": 592,
 			"end_page": 593,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 127}]
 		},
 		{
 			"id": 89,
@@ -710,7 +710,7 @@
 			"start_page": 593,
 			"end_page": 594,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 161.8}]
 		},
 		{
 			"id": 90,
@@ -718,7 +718,7 @@
 			"start_page": 594,
 			"end_page": 595,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 86.9}]
 		},
 		{
 			"id": 91,
@@ -726,7 +726,7 @@
 			"start_page": 595,
 			"end_page": 595,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 64.7}]
 		},
 		{
 			"id": 92,
@@ -734,7 +734,7 @@
 			"start_page": 595,
 			"end_page": 596,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 82.2}]
 		},
 		{
 			"id": 93,
@@ -742,7 +742,7 @@
 			"start_page": 596,
 			"end_page": 596,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 47.8}]
 		},
 		{
 			"id": 94,
@@ -750,7 +750,7 @@
 			"start_page": 596,
 			"end_page": 597,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 26.8}]
 		},
 		{
 			"id": 95,
@@ -758,7 +758,7 @@
 			"start_page": 597,
 			"end_page": 597,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 40}]
 		},
 		{
 			"id": 96,
@@ -766,7 +766,7 @@
 			"start_page": 597,
 			"end_page": 598,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 69.8}]
 		},
 		{
 			"id": 97,
@@ -774,7 +774,7 @@
 			"start_page": 598,
 			"end_page": 598,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 33.2}]
 		},
 		{
 			"id": 98,
@@ -782,7 +782,7 @@
 			"start_page": 598,
 			"end_page": 599,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 106.6}]
 		},
 		{
 			"id": 99,
@@ -790,7 +790,7 @@
 			"start_page": 599,
 			"end_page": 599,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 39.6}]
 		},
 		{
 			"id": 100,
@@ -798,7 +798,7 @@
 			"start_page": 599,
 			"end_page": 600,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 47.7}]
 		},
 		{
 			"id": 101,
@@ -806,7 +806,7 @@
 			"start_page": 600,
 			"end_page": 600,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 42.7}]
 		},
 		{
 			"id": 102,
@@ -814,7 +814,7 @@
 			"start_page": 600,
 			"end_page": 600,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 36.3}]
 		},
 		{
 			"id": 103,
@@ -822,7 +822,7 @@
 			"start_page": 601,
 			"end_page": 601,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 15.8}]
 		},
 		{
 			"id": 104,
@@ -830,7 +830,7 @@
 			"start_page": 601,
 			"end_page": 601,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 35.9}]
 		},
 		{
 			"id": 105,
@@ -838,7 +838,7 @@
 			"start_page": 601,
 			"end_page": 601,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 26.6}]
 		},
 		{
 			"id": 106,
@@ -846,7 +846,7 @@
 			"start_page": 602,
 			"end_page": 602,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 20.1}]
 		},
 		{
 			"id": 107,
@@ -854,7 +854,7 @@
 			"start_page": 602,
 			"end_page": 602,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 28.2}]
 		},
 		{
 			"id": 108,
@@ -862,7 +862,7 @@
 			"start_page": 602,
 			"end_page": 602,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 12.1}]
 		},
 		{
 			"id": 109,
@@ -870,7 +870,7 @@
 			"start_page": 603,
 			"end_page": 603,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 33.1}]
 		},
 		{
 			"id": 110,
@@ -878,7 +878,7 @@
 			"start_page": 603,
 			"end_page": 603,
 			"makkia": 0,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 19.8}]
 		},
 		{
 			"id": 111,
@@ -886,7 +886,7 @@
 			"start_page": 603,
 			"end_page": 603,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 23.1}]
 		},
 		{
 			"id": 112,
@@ -894,7 +894,7 @@
 			"start_page": 604,
 			"end_page": 604,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 10.5}]
 		},
 		{
 			"id": 113,
@@ -902,7 +902,7 @@
 			"start_page": 604,
 			"end_page": 604,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 19.2}]
 		},
 		{
 			"id": 114,
@@ -910,7 +910,7 @@
 			"start_page": 604,
 			"end_page": 604,
 			"makkia": 1,
-                        "audio": [{"reciter": 5, "duration" : 6704.6}]
+                        "audio": [{"reciter": 5, "duration" : 22.2}]
 		}
 	]
 }

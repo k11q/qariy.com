@@ -59,6 +59,7 @@
 				</p>
 			</div>
 			<div>
+			{{ currentDuration }}
 				<Icon
 					name="lucide:repeat"
 					size="1.25rem"
