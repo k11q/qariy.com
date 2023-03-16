@@ -30,11 +30,12 @@
 			</p>
 	</div>
 		<div class="p-4 flex flex-col relative">
-
 			<div
-				class="flex items-center justify-center gap-3"
+				class="grid grid-cols-9 items-center justify-center gap-3"
 				v-show="audioPlaying"
 			>
+			<p class="col-span-2 text-sm opacity-70 self-start">{{parseFloat(elapsedTime + seekValue).toFixed(2)}}</p>
+			<div class="flex col-span-5 items-center justify-center">
 				<div
 					@click="
 						() => {
@@ -96,6 +97,8 @@
 						/>
 					</div>
 				</div>
+			</div>
+				<p class="col-span-2 text-right text-sm opacity-70 self-start">{{ parseFloat(duration).toFixed(2) }}</p>
 				<!--
 			<button @click="forward">Forward 10s</button>
 			<button @click="backward">Backward 10s</button>
@@ -247,9 +250,9 @@ function seek(event) {
 		((parseFloat(event.target.value) % 1) * 100) / 60;
 	console.log(newPosition);
 	seekValue =
-		newPosition -
+		newPosition - 
 		(ctx.currentTime - startTime.value + pauseTime.value);
-	elapsedTime.value = newPosition;
+	console.log(seekValue)
 	if (audio.value) {
 		playback();
 	}
