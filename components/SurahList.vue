@@ -19,7 +19,8 @@
 				<p
 					class="h-10 w-10 flex-none bg-neutral-900 rounded-full border-2 border-neutral-700 flex items-center justify-center opacity-70 text-[13px]"
 				>
-					{{ i.id }}
+				<Icon name="ion:volume-high" class="text-green-400" v-if="i.id == currentPlayingId" size="1.125rem"/>
+					{{ i.id != currentPlayingId ? i.id : ""}}
 				</p>
 			</div>
 			<p class="flex-grow">
