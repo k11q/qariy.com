@@ -1,16 +1,16 @@
 <template>
 	<div class="flex flex-col justify-center items-center">
 		<div
-			class="h-60 px-6 py-6 flex items-end justify-between bg-neutral-800 w-full max-w-md"
+			class="h-60 px-5 py-5 flex flex-col justify-end items-start gap-6 bg-neutral-800 w-full max-w-md"
 		>
-			<p class="text-3xl font-semibold">Qari</p>
-				<div class="relative w-2/5 flex items-center">
+			<p class="text-3xl font-semibold ml-3">Qari</p>
+				<div class="relative w-full flex items-center">
 				<select
 					name="qari"
 					id="qari"
 					:value="reciterId"
 					@change="changeQari($event)"
-					class="focus:outline-none px-2 py-2 max-w-full overflow-ellipsis bg-neutral-700/40 border border-neutral-600 rounded"
+					class="focus:outline-none px-3 py-2 w-full overflow-ellipsis bg-neutral-700/40 border border-neutral-600 rounded"
 				>
 					<option
 						v-for="reciter in (reciters.reciters).sort((x, y)=>x.name.localeCompare(y.name))"
@@ -20,7 +20,7 @@
 					</option>
 					
 				</select>
-				<Icon name="lucide:chevron-down" class="absolute right-0 mr-2"/>
+				<Icon name="lucide:chevron-down" class="absolute right-0 mr-4"/>
 			</div>
 		</div>
 		<div
