@@ -4,7 +4,7 @@
 			v-for="(i, index) in chapters.suwar"
 			:class="`flex flex-none gap-6 items-center justify-center  px-6 py-2 cursor-default ${
 				i.id == currentPlayingId
-					? 'bg-neutral-500/70'
+					? 'bg-neutral-400/60 text-white/60'
 					: 'bg-neutral-700/40 even:bg-neutral-700/60 hover:bg-sky-200/80 [&>div>p]:hover:bg-sky-100/90 hover:text-neutral-900 '
 			}`"
 			@click="
