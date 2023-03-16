@@ -32,7 +32,7 @@
 				</p>
 				<p>
 					{{
-						audioPlaying != 80
+						loading ? 'loading...' : audioPlaying != 80
 							? chapters.suwar[
 									chapters.suwar.findIndex(
 										(
@@ -196,6 +196,7 @@ const pause = ref(false);
 let animationFrameId;
 const duration = ref(0);
 let windowWidth = 100;
+const loading = ref(false);
 const audioDuration = computed(() => {
 	return audio.value ? audio.value.duration : 0;
 });
@@ -231,6 +232,7 @@ const { data: chapters } = await useAsyncData("chapters", async () =>
 
 async function handleFetch(num) {
 	let num2 = num > 99 ? `${num}` : num > 9 ? `0${num}` : `00${num}`;
+	loading.value = true;
 	const api = `https://server10.mp3quran.net/ajm/${num2}.mp3`;
 	await fetch(api)
 		.then((data) => data.arrayBuffer())
@@ -240,6 +242,7 @@ async function handleFetch(num) {
 		});
 	startTime.value = 0;
 	elapsedTime.value = 0;
+	loading.value = false;
 	playback(`${num}`);
 }
 
@@ -307,7 +310,7 @@ function seek(event) {
 }
 
 function updateSliderPosition() {
-	if (playSound && audio.value && !pause.value) {
+	if (playSound && audio.value && !pause.value && !loading.value) {
 		elapsedTime.value =
 			ctx.currentTime -
 			startTime.value +
@@ -326,6 +329,7 @@ function updateSliderPosition() {
 			console.log("done");
 		}
 	}
+	loading.value ? pause.value = true : ''
 
 	animationFrameId = requestAnimationFrame(updateSliderPosition);
 }
