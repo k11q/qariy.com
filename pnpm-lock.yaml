@@ -2,11 +2,13 @@ lockfileVersion: 5.4
 
 specifiers:
   '@nuxtjs/tailwindcss': ^6.6.0
+  howler: ^2.2.3
   nuxt: ^3.1.1
   nuxt-icon: ^0.3.3
 
 dependencies:
   '@nuxtjs/tailwindcss': 6.6.0
+  howler: 2.2.3
   nuxt-icon: 0.3.3
 
 devDependencies:
@@ -3286,6 +3288,10 @@ packages:
 
   /hookable/5.5.1:
     resolution: {integrity: sha512-ac50aYjbtRMMZEtTG0qnVaBDA+1lqL9fHzDnxMQlVuO6LZWcBB7NXjIu9H9iImClewNdrit4RiEzi9QpRTgKrg==}
+
+  /howler/2.2.3:
+    resolution: {integrity: sha512-QM0FFkw0LRX1PR8pNzJVAY25JhIWvbKMBFM4gqk+QdV+kPXOhleWGCB6AiAF/goGjIHK2e/nIElplvjQwhr0jg==}
+    dev: false
 
   /html-tags/3.2.0:
     resolution: {integrity: sha512-vy7ClnArOZwCnqZgvv+ddgHgJiAFXe3Ge9ML5/mBctVJoUoYPCdxVucOywjDARn6CVoh3dRSFdPHy2sX80L0Wg==}

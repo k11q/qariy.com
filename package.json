@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.6.0",
+    "howler": "^2.2.3",
     "nuxt-icon": "^0.3.3"
   }
 }

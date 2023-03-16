@@ -3,14 +3,14 @@
 		<div
 			v-for="(i, index) in chapters.suwar"
 			:class="`flex flex-none gap-6 items-center justify-center  px-6 py-3 cursor-default ${
-				i.id == audioPlaying
+				i.id == currentPlayingId
 					? 'opacity-60 bg-neutral-500'
 					: 'bg-neutral-800/80 even:bg-neutral-700/50 hover:bg-sky-200/80 [&>div>p]:hover:bg-sky-100/90 hover:text-neutral-900 '
 			}`"
 			@click="
 				() => {
-					i.id != audioPlaying
-						? handleFetch(i.id)
+					i.id != currentPlayingId
+						? playAudio(i.id)
 						: '';
 				}
 			"
@@ -29,7 +29,7 @@
 	</template>
 	<div
 		class="z-[999] sticky bottom-0 bg-neutral-700 border-t border-neutral-600"
-		v-if="audioPlaying || loading"
+		v-if="currentPlayingId || loading"
 	>
 		<div class="px-4 py-3 flex flex-row">
 			<div v-if="chapters || loading">
@@ -40,14 +40,14 @@
 					{{
 						loading
 							? "loading..."
-							: audioPlaying != 80
+							: currentPlayingId != 80
 							? chapters.suwar[
 									chapters.suwar.findIndex(
 										(
 											i
 										) =>
 											i.id ==
-											audioPlaying
+											currentPlayingId
 									)
 							  ].name
 							: "Abasa"
@@ -62,11 +62,7 @@
 				<p
 					class="col-span-2 text-[13px] opacity-70 self-start"
 				>
-					{{
-						parseFloat(
-							elapsedTime * 0.01
-						).toFixed(2)
-					}}
+					{{ currentSeek ? formatTime(currentSeek) : '00:00' }}
 				</p>
 				<div
 					class="flex col-span-5 items-center justify-center gap-4"
@@ -74,11 +70,9 @@
 					<div
 						@click="
 							() => {
-								audioPlaying
+								currentPlayingId
 									? playPrevSurah(
-											parseInt(
-												audioPlaying
-											)
+											currentPlayingId
 									  )
 									: '';
 							}
@@ -99,11 +93,9 @@
 							() => {
 								pause
 									? playAudio(
-											audioElement
+											currentPlayingId
 									  )
-									: pauseAudio(
-											audioElement
-									  );
+									: pauseAudio();
 							}
 						"
 						class="h-14 w-14 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-600 aspect-square"
@@ -130,11 +122,9 @@
 					<div
 						@click="
 							() => {
-								audioPlaying
+								currentPlayingId
 									? playNextSurah(
-											parseInt(
-												audioPlaying
-											)
+											currentPlayingId
 									  )
 									: '';
 							}
@@ -154,11 +144,7 @@
 				<p
 					class="col-span-2 text-right text-[13px] opacity-70 self-start"
 				>
-					{{
-						parseFloat(
-							duration * 0.01
-						).toFixed(2)
-					}}
+					{{ currentDuration ? formatTime(currentDuration) : '00:00' }}
 				</p>
 				<!--
 			<button @click="forward">Forward 10s</button>
@@ -184,11 +170,11 @@
 				<div
 					class="relative bottom-0 h-1 hover:h-2 transition-all duration-75 w-full bg-neutral-600 touch-none"
 				>
-					<div
-						class="absolute left-0 top-0 bottom-0 bg-green-500 transition-all duration-75 touch-none"
+					<div	v-if="sound && sound.duration()"
+						class="absolute left-0 top-0 bottom-0 bg-green-500 transition-all touch-none"
 						:style="`width: calc(${
-							(elapsedTime /
-								duration) *
+							(currentSeek /
+							currentDuration) *
 							windowWidth
 						}px)`"
 					></div>
@@ -199,9 +185,9 @@
 					id="seek"
 					name="seek"
 					min="0"
-					:max="audioDuration"
+					:max="currentDuration"
 					:step="0.01"
-					:value="elapsedTime"
+					:value="currentSeek"
 					@input="seek"
 				/>
 			</div>
@@ -210,216 +196,96 @@
 </template>
 
 <script setup>
-let ctx;
-const audio = ref();
-let playSound;
-const startTime = ref(0);
-const pauseTime = ref(0);
-const audioPlaying = ref("");
-const elapsedTime = ref(0);
+import { Howl } from "howler";
+
+const sound = ref(null);
+const currentPlayingId = ref(0);
 const pause = ref(false);
 let animationFrameId;
-const duration = ref(0);
 let windowWidth = 100;
 const loading = ref(false);
-const audioDuration = computed(() => {
-	return audio.value ? audio.value.duration : 0;
-});
-let audioElement;
+const currentDuration = ref(0);
+const currentSeek = ref(0);
+const playing = ref(false);
 onMounted(() => {
-	audioElement = new Audio();
-});
-let seekValue = 0;
-onMounted(() => {
-	ctx = new AudioContext();
 	windowWidth = window.innerWidth > 448 ? 448 : window.innerWidth;
 });
-
-function playback(api) {
-	if (playSound) {
-		playSound.stop();
-	}
-	if (api && audioPlaying.value != api) {
-		startTime.value = 0;
-		pauseTime.value = 0;
-		elapsedTime.value = 0;
-		seekValue = 0;
-		audioPlaying.value = api;
-	}
-	playSound = ctx.createBufferSource();
-	playSound.buffer = audio.value;
-	playSound.connect(ctx.destination);
-	const offset = elapsedTime.value;
-	startTime.value = ctx.currentTime;
-	playSound.start(0, offset);
-	pause.value = false;
-}
 
 const { data: chapters } = await useAsyncData("chapters", async () =>
 	$fetch("https://mp3quran.net/api/v3/suwar?language=eng")
 );
 
-let mediaSource;
-onMounted(() => {
-	mediaSource = new MediaSource();
-});
-let sourceBuffer;
-let bufferQueue = [];
-
-function processBufferQueue() {
-	if (bufferQueue.length > 0 && !sourceBuffer.updating) {
-		const buffer = bufferQueue.shift();
-		sourceBuffer.appendBuffer(buffer);
-	}
-}
-
-async function fetchAudioData(url, start, end) {
-	let response = await fetch(url, {
-		method: "GET",
-		headers: {
-			"Content-Type": "audio/mpeg",
-			Range: `bytes=${start}-${end}`,
-		},
-	});
-
-	if (response.ok) {
-		let value = await response.arrayBuffer();
-		loading.value = false;
-		if (sourceBuffer.updating || bufferQueue.length > 0) {
-			bufferQueue.push(value);
-		} else {
-			sourceBuffer.appendBuffer(value);
+function playAudio(id) {
+	let num2 = id > 99 ? `${id}` : id > 9 ? `0${id}` : `00${id}`;
+	console.log(num2);
+	if (!sound.value || currentPlayingId.value != id) {
+		if (sound.value) {
+			sound.value.unload();
 		}
-	} else {
-		console.error(
-			"Error fetching audio data:",
-			response.status,
-			response.statusText
-		);
+		currentDuration.value = 0;
+		currentSeek.value = 0;
+		currentPlayingId.value = id;
+		const url = `https://server10.mp3quran.net/ajm/${num2}.mp3`;
+		sound.value = new Howl({
+			src: [url],
+			html5: true,
+		});
 	}
+	pause.value = false;
+	sound.value.play();
+	playing.value = true;
 }
 
-async function loadAudio(url) {
-	const chunkSize = 1024 * 1024; // 1 MB
-	let startByte = 0;
-	let endByte = chunkSize - 1;
-
-	mediaSource.addEventListener("sourceopen", () => {
-		sourceBuffer = mediaSource.addSourceBuffer("audio/mpeg");
-		sourceBuffer.addEventListener("updateend", processBufferQueue);
-
-		fetchAudioData(url, startByte, endByte);
-
-		audioElement.ontimeupdate = () => {
-			const bufferEnd = sourceBuffer.buffered.length
-				? sourceBuffer.buffered.end(0)
-				: 0;
-			const currentTime = audioElement.currentTime;
-
-			// Check if we are near the end of the buffer (0.5s before the end) and fetch the next chunk
-			if (bufferEnd - currentTime < 1) {
-				startByte = endByte + 1;
-				endByte = startByte + chunkSize - 1;
-				fetchAudioData(url, startByte, endByte);
-			}
-		};
-	});
-}
-
-async function handleFetch(num) {
-	let num2 = num > 99 ? `${num}` : num > 9 ? `0${num}` : `00${num}`;
-	loading.value = true;
-	audioPlaying.value = num;
-	const api = `https://server10.mp3quran.net/ajm/${num2}.mp3`;
-
-	audioElement.src = URL.createObjectURL(mediaSource);
-	audioElement.crossOrigin = "anonymous";
-	audioElement.preload = "none";
-
-	loadAudio(api);
-}
-
-function playAudio(audioElement) {
-	if (audioElement) {
-		audioElement.play();
-		pause.value = false;
-	}
-}
-
-function pauseAudio(audioElement) {
-	if (audioElement) {
-		audioElement.pause();
+function pauseAudio() {
+	if (sound.value) {
 		pause.value = true;
-	}
-}
-
-function forward() {
-	if (ctx && audio.value) {
-		ctx.currentTime = Math.min(
-			ctx.currentTime + 10,
-			audio.value.duration
-		);
-		playback();
+		sound.value.pause();
 	}
 }
 
 function playNextSurah(num) {
 	if (num == 114) {
-		handleFetch(1);
-	} else handleFetch(num + 1);
+		playAudio(1);
+	} else playAudio(num + 1);
 }
 
 function playPrevSurah(num) {
 	if (num == 1) {
-		handleFetch(114);
-	} else handleFetch(num - 1);
+		playAudio(114);
+	} else playAudio(num - 1);
 }
 
-function backward() {
-	if (ctx && audio.value) {
-		ctx.currentTime = Math.max(ctx.currentTime - 10, 0);
-		playback();
-	}
-}
+function seek(event) {}
 
-function changeVolume(event) {
-	if (ctx) {
-		ctx.destination.channelInterpretation = event.target.value;
-	}
-}
-
-function seek(event) {
-	const newPosition =
-		parseInt(event.target.value) +
-		((parseFloat(event.target.value) % 1) * 100) / 60;
-	console.log(newPosition);
-	seekValue =
-		newPosition -
-		(ctx.currentTime - startTime.value + pauseTime.value);
-	console.log(seekValue);
-	if (audio.value) {
-		playback();
-	}
+function formatTime(time){
+	const minutes = Math.floor(time / 60);
+		const seconds = Math.round(time % 60);
+		return `${
+			minutes > 9 ? `${minutes}` : `0${minutes}`
+		}:${seconds > 9 ? `${seconds}` : `0${seconds}`}`
 }
 
 function updateSliderPosition() {
-	if (playSound && audio.value && !pause.value && !loading.value) {
-		elapsedTime.value =
-			ctx.currentTime -
-			startTime.value +
-			pauseTime.value +
-			seekValue;
-		duration.value = audio.value.duration;
-		console.log("playing");
-		if (elapsedTime.value >= audio.value.duration) {
-			playSound = null;
-			audio.value = null;
-			playNextSurah(parseInt(audioPlaying.value));
-			pauseTime.value = 0;
-			//audioPlaying.value = "";
-			pause.value = false;
-			seekValue = 0;
+	if (
+		currentPlayingId.value &&
+		sound.value &&
+		playing.value &&
+		!pause.value
+	) {
+		currentSeek.value = sound.value.seek();
+		if (sound.value.duration()) {
+			if (!currentDuration.value) {
+				currentDuration.value = sound.value.duration();
+			}
+			if (
+				currentSeek.value >= currentDuration.value &&
+				currentDuration.value != 0
+			) {
+				playNextSurah(currentPlayingId.value);
+				pause.value = false;
+			}
 		}
+		console.log("playing");
 	}
 	loading.value ? (pause.value = true) : "";
 
