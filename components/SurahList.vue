@@ -31,7 +31,7 @@
 		</div>
 	</template>
 	<div
-		class="z-[999] sticky bottom-0  border-t-2 border-neutral-900/70 bg-gradient-to-b from-neutral-500 to-neutral-600"
+		class="z-[999] sticky bottom-0  border-t-2 border-neutral-900/70 bg-gradient-to-b from-neutral-500 via-neutral-600 to-neutral-600"
 		v-if="currentPlayingId || loading"
 	>
 		<div
