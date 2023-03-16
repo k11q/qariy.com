@@ -23,10 +23,10 @@
 	</template>
 	<div
 		class="z-[999] sticky bottom-0 bg-neutral-700 border-t border-neutral-600"
-		v-show="audioPlaying"
+		v-if="audioPlaying || loading"
 	>
 		<div class="px-4 py-3 flex flex-row">
-			<div v-if="chapters && audioPlaying">
+			<div v-if="chapters || loading">
 				<p class="text-[11px] leading-4 opacity-70">
 					Now playing:
 				</p>
@@ -50,15 +50,13 @@
 		<div class="p-4 flex flex-col relative">
 			<div
 				class="grid grid-cols-9 items-center justify-center gap-3"
-				v-show="audioPlaying || loading"
 			>
 				<p
 					class="col-span-2 text-[13px] opacity-70 self-start"
 				>
 					{{
 						parseFloat(
-							(elapsedTime +
-								seekValue) *
+							elapsedTime *
 								0.01
 						).toFixed(2)
 					}}
