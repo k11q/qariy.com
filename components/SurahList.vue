@@ -7,7 +7,13 @@
 					? 'opacity-60 bg-neutral-500'
 					: 'bg-neutral-800/80 even:bg-neutral-700/50 hover:bg-sky-200/80 [&>div>p]:hover:bg-sky-100/90 hover:text-neutral-900 '
 			}`"
-			@click="()=>{i.id != audioPlaying ? handleFetch(i.id) : ''}"
+			@click="
+				() => {
+					i.id != audioPlaying
+						? handleFetch(i.id)
+						: '';
+				}
+			"
 		>
 			<div class="flex flex-none">
 				<p
@@ -32,7 +38,9 @@
 				</p>
 				<p>
 					{{
-						loading ? 'loading...' : audioPlaying != 80
+						loading
+							? "loading..."
+							: audioPlaying != 80
 							? chapters.suwar[
 									chapters.suwar.findIndex(
 										(
@@ -56,8 +64,7 @@
 				>
 					{{
 						parseFloat(
-							elapsedTime *
-								0.01
+							elapsedTime * 0.01
 						).toFixed(2)
 					}}
 				</p>
@@ -66,7 +73,15 @@
 				>
 					<div
 						@click="
-							() => {audioPlaying ? playPrevSurah(parseInt(audioPlaying)) : ''}
+							() => {
+								audioPlaying
+									? playPrevSurah(
+											parseInt(
+												audioPlaying
+											)
+									  )
+									: '';
+							}
 						"
 						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-600 aspect-square"
 					>
@@ -83,8 +98,12 @@
 						@click="
 							() => {
 								pause
-									? playAudio()
-									: pauseAudio();
+									? playAudio(
+											audioElement
+									  )
+									: pauseAudio(
+											audioElement
+									  );
 							}
 						"
 						class="h-14 w-14 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-600 aspect-square"
@@ -110,7 +129,15 @@
 					</div>
 					<div
 						@click="
-							() => {audioPlaying ? playNextSurah(parseInt(audioPlaying)) : ''}
+							() => {
+								audioPlaying
+									? playNextSurah(
+											parseInt(
+												audioPlaying
+											)
+									  )
+									: '';
+							}
 						"
 						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-600 aspect-square"
 					>
@@ -198,6 +225,10 @@ const loading = ref(false);
 const audioDuration = computed(() => {
 	return audio.value ? audio.value.duration : 0;
 });
+let audioElement;
+onMounted(() => {
+	audioElement = new Audio();
+});
 let seekValue = 0;
 onMounted(() => {
 	ctx = new AudioContext();
@@ -228,32 +259,96 @@ const { data: chapters } = await useAsyncData("chapters", async () =>
 	$fetch("https://mp3quran.net/api/v3/suwar?language=eng")
 );
 
-async function handleFetch(num) {
-	let num2 = num > 99 ? `${num}` : num > 9 ? `0${num}` : `00${num}`;
-	loading.value = true;
-	const api = `https://server10.mp3quran.net/ajm/${num2}.mp3`;
-	await fetch(api)
-		.then((data) => data.arrayBuffer())
-		.then((arrayBuffer) => ctx.decodeAudioData(arrayBuffer))
-		.then((decodedAudio) => {
-			audio.value = decodedAudio;
-		});
-	startTime.value = 0;
-	elapsedTime.value = 0;
-	loading.value = false;
-	playback(`${num}`);
-}
+let mediaSource;
+onMounted(() => {
+	mediaSource = new MediaSource();
+});
+let sourceBuffer;
+let bufferQueue = [];
 
-function playAudio() {
-	if (audio.value) {
-		playback();
+function processBufferQueue() {
+	if (bufferQueue.length > 0 && !sourceBuffer.updating) {
+		const buffer = bufferQueue.shift();
+		sourceBuffer.appendBuffer(buffer);
 	}
 }
 
-function pauseAudio() {
-	if (playSound) {
-		playSound.stop();
-		pauseTime.value = elapsedTime.value;
+async function fetchAudioData(url, start, end) {
+	let response = await fetch(url, {
+		method: "GET",
+		headers: {
+			"Content-Type": "audio/mpeg",
+			Range: `bytes=${start}-${end}`,
+		},
+	});
+
+	if (response.ok) {
+		let value = await response.arrayBuffer();
+		loading.value = false;
+		if (sourceBuffer.updating || bufferQueue.length > 0) {
+			bufferQueue.push(value);
+		} else {
+			sourceBuffer.appendBuffer(value);
+		}
+	} else {
+		console.error(
+			"Error fetching audio data:",
+			response.status,
+			response.statusText
+		);
+	}
+}
+
+async function loadAudio(url) {
+	const chunkSize = 1024 * 1024; // 1 MB
+	let startByte = 0;
+	let endByte = chunkSize - 1;
+
+	mediaSource.addEventListener("sourceopen", () => {
+		sourceBuffer = mediaSource.addSourceBuffer("audio/mpeg");
+		sourceBuffer.addEventListener("updateend", processBufferQueue);
+
+		fetchAudioData(url, startByte, endByte);
+
+		audioElement.ontimeupdate = () => {
+			const bufferEnd = sourceBuffer.buffered.length
+				? sourceBuffer.buffered.end(0)
+				: 0;
+			const currentTime = audioElement.currentTime;
+
+			// Check if we are near the end of the buffer (0.5s before the end) and fetch the next chunk
+			if (bufferEnd - currentTime < 1) {
+				startByte = endByte + 1;
+				endByte = startByte + chunkSize - 1;
+				fetchAudioData(url, startByte, endByte);
+			}
+		};
+	});
+}
+
+async function handleFetch(num) {
+	let num2 = num > 99 ? `${num}` : num > 9 ? `0${num}` : `00${num}`;
+	loading.value = true;
+	audioPlaying.value = num;
+	const api = `https://server10.mp3quran.net/ajm/${num2}.mp3`;
+
+	audioElement.src = URL.createObjectURL(mediaSource);
+	audioElement.crossOrigin = "anonymous";
+	audioElement.preload = "none";
+
+	loadAudio(api);
+}
+
+function playAudio(audioElement) {
+	if (audioElement) {
+		audioElement.play();
+		pause.value = false;
+	}
+}
+
+function pauseAudio(audioElement) {
+	if (audioElement) {
+		audioElement.pause();
 		pause.value = true;
 	}
 }
@@ -319,14 +414,14 @@ function updateSliderPosition() {
 		if (elapsedTime.value >= audio.value.duration) {
 			playSound = null;
 			audio.value = null;
-			playNextSurah(parseInt(audioPlaying.value))
+			playNextSurah(parseInt(audioPlaying.value));
 			pauseTime.value = 0;
 			//audioPlaying.value = "";
 			pause.value = false;
 			seekValue = 0;
 		}
 	}
-	loading.value ? pause.value = true : ''
+	loading.value ? (pause.value = true) : "";
 
 	animationFrameId = requestAnimationFrame(updateSliderPosition);
 }
