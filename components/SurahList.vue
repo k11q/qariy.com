@@ -2,10 +2,20 @@
 	<template v-if="chapters">
 		<div
 			v-for="(i, index) in chapters.suwar"
-			:class="`flex flex-none items-center justify-center bg-neutral-900 px-6 py-4 cursor-default hover:bg-neutral-800 ${i.id == audioPlaying ? 'opacity-60 bg-neutral-800' : ''}`"
+			:class="`flex flex-none gap-6 items-center justify-center bg-neutral-900 px-6 py-3 cursor-default hover:bg-neutral-800 ${
+				i.id == audioPlaying
+					? 'opacity-60 bg-neutral-800'
+					: ''
+			}`"
 			@click="handleFetch(i.id)"
 		>
-			<p class="w-16">{{ i.id }}</p>
+			<div class="flex flex-none">
+				<p
+					class="h-9 w-9 flex-none bg-neutral-700 rounded flex items-center justify-center opacity-70 text-[13px]"
+				>
+					{{ i.id }}
+				</p>
+			</div>
 			<p class="flex-grow">
 				{{ i.id != 80 ? i.name : "Abasa" }}
 			</p>
@@ -15,90 +25,116 @@
 		class="z-[999] sticky bottom-0 bg-neutral-800 border-t border-neutral-700"
 		v-show="audioPlaying"
 	>
-	<div class="p-4 flex flex-row">
-		<p v-if="chapters && audioPlaying">
-				Now playing:
-				{{
-					chapters.suwar[
-						chapters.suwar.findIndex(
-							(i) =>
-								i.id ==
-								audioPlaying
-						)
-					].name
-				}}
-			</p>
-	</div>
+		<div class="px-4 py-3 flex flex-row">
+			<div v-if="chapters && audioPlaying">
+				<p class="text-[11px] leading-4 opacity-70">
+					Now playing:
+				</p>
+				<p>
+					{{
+						audioPlaying != 80
+							? chapters.suwar[
+									chapters.suwar.findIndex(
+										(
+											i
+										) =>
+											i.id ==
+											audioPlaying
+									)
+							  ].name
+							: "Abasa"
+					}}
+				</p>
+			</div>
+		</div>
 		<div class="p-4 flex flex-col relative">
 			<div
 				class="grid grid-cols-9 items-center justify-center gap-3"
 				v-show="audioPlaying"
 			>
-			<p class="col-span-2 text-sm opacity-70 self-start">{{parseFloat(elapsedTime + seekValue).toFixed(2)}}</p>
-			<div class="flex col-span-5 items-center justify-center">
+				<p
+					class="col-span-2 text-[13px] opacity-70 self-start"
+				>
+					{{
+						parseFloat(
+							(elapsedTime +
+								seekValue) *
+								0.01
+						).toFixed(2)
+					}}
+				</p>
 				<div
-					@click="
-						() => {
-							pause
-								? playAudio()
-								: pauseAudio();
-						}
-					"
-					class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border border-neutral-700 aspect-square"
+					class="flex col-span-5 items-center justify-center gap-4"
 				>
 					<div
-						class="opacity-70 -mt-[0.5px] flex"
+						@click="
+							() => {audioPlaying ? playPrevSurah(parseInt(audioPlaying)) : ''}
+						"
+						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border border-neutral-700 aspect-square"
 					>
-						<Icon
-							name="lucide:skip-back"
-							size="1rem"
-						/>
+						<div
+							class="opacity-70 -mt-[0.5px] flex"
+						>
+							<Icon
+								name="lucide:skip-back"
+								size="1rem"
+							/>
+						</div>
 					</div>
-				</div>
-				<div
-					@click="
-						() => {
-							pause
-								? playAudio()
-								: pauseAudio();
-						}
-					"
-					class="h-14 w-14 relative flex-none flex items-center justify-center rounded-full border border-neutral-700 aspect-square"
-				>
-					<div class="-mt-0.5" v-if="pause">
-						<Icon
-							name="lucide:play"
-							size="1.5rem"
-						/>
-					</div>
-					<div class="-mt-0.5" v-if="!pause">
-						<Icon
-							name="lucide:pause"
-							size="1.5rem"
-						/>
-					</div>
-				</div>
-				<div
-					@click="
-						() => {
-							pause
-								? playAudio()
-								: pauseAudio();
-						}
-					"
-					class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border border-neutral-700 aspect-square"
-				>
 					<div
-						class="opacity-70 -mt-[0.5px] flex"
+						@click="
+							() => {
+								pause
+									? playAudio()
+									: pauseAudio();
+							}
+						"
+						class="h-14 w-14 relative flex-none flex items-center justify-center rounded-full border border-neutral-700 aspect-square"
 					>
-						<Icon
-							name="lucide:skip-forward"
-							size="1rem"
-						/>
+						<div
+							class="-mt-0.5"
+							v-if="pause"
+						>
+							<Icon
+								name="lucide:play"
+								size="1.5rem"
+							/>
+						</div>
+						<div
+							class="-mt-0.5"
+							v-if="!pause"
+						>
+							<Icon
+								name="lucide:pause"
+								size="1.5rem"
+							/>
+						</div>
+					</div>
+					<div
+						@click="
+							() => {audioPlaying ? playNextSurah(parseInt(audioPlaying)) : ''}
+						"
+						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border border-neutral-700 aspect-square"
+					>
+						<div
+							class="opacity-70 -mt-[0.5px] flex"
+						>
+							<Icon
+								name="lucide:skip-forward"
+								size="1rem"
+							/>
+						</div>
 					</div>
 				</div>
-			</div>
-				<p class="col-span-2 text-right text-sm opacity-70 self-start">{{ parseFloat(duration).toFixed(2) }}</p>
+				<p
+					class="col-span-2 text-right text-[13px] opacity-70 self-start"
+				>
+					{{
+						parseFloat(
+							duration * 0.01
+						).toFixed(2)
+					}}
+				</p>
 				<!--
 			<button @click="forward">Forward 10s</button>
 			<button @click="backward">Backward 10s</button>
@@ -166,7 +202,7 @@ const audioDuration = computed(() => {
 let seekValue = 0;
 onMounted(() => {
 	ctx = new AudioContext();
-	windowWidth = window.innerWidth;
+	windowWidth = window.innerWidth > 448 ? 448 : window.innerWidth;
 });
 
 function playback(api) {
@@ -231,6 +267,18 @@ function forward() {
 	}
 }
 
+function playNextSurah(num) {
+	if (num == 114) {
+		handleFetch(1);
+	} else handleFetch(num + 1);
+}
+
+function playPrevSurah(num) {
+	if (num == 1) {
+		handleFetch(114);
+	} else handleFetch(num - 1);
+}
+
 function backward() {
 	if (ctx && audio.value) {
 		ctx.currentTime = Math.max(ctx.currentTime - 10, 0);
@@ -250,9 +298,9 @@ function seek(event) {
 		((parseFloat(event.target.value) % 1) * 100) / 60;
 	console.log(newPosition);
 	seekValue =
-		newPosition - 
+		newPosition -
 		(ctx.currentTime - startTime.value + pauseTime.value);
-	console.log(seekValue)
+	console.log(seekValue);
 	if (audio.value) {
 		playback();
 	}
@@ -274,6 +322,7 @@ function updateSliderPosition() {
 			audioPlaying.value = "";
 			pause.value = false;
 			seekValue = 0;
+			playNextSurah(parseInt(audioPlaying.value))
 			console.log("done");
 		}
 	}
