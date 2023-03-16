@@ -2,10 +2,10 @@
 	<template v-if="chapters">
 		<div
 			v-for="(i, index) in chapters.suwar"
-			:class="`flex flex-none gap-6 items-center justify-center  px-6 py-3 cursor-default ${
+			:class="`flex flex-none gap-6 items-center justify-center  px-6 py-2 cursor-default ${
 				i.id == currentPlayingId
-					? 'opacity-60 bg-neutral-500'
-					: 'bg-neutral-800/80 even:bg-neutral-700/50 hover:bg-sky-200/80 [&>div>p]:hover:bg-sky-100/90 hover:text-neutral-900 '
+					? 'bg-neutral-500/70'
+					: 'bg-neutral-700/40 even:bg-neutral-700/60 hover:bg-sky-200/80 [&>div>p]:hover:bg-sky-100/90 hover:text-neutral-900 '
 			}`"
 			@click="
 				() => {
@@ -17,7 +17,7 @@
 		>
 			<div class="flex flex-none">
 				<p
-					class="h-9 w-9 flex-none bg-neutral-700 rounded flex items-center justify-center opacity-70 text-[13px]"
+					class="h-10 w-10 flex-none bg-neutral-900 rounded-full border-2 border-neutral-700 flex items-center justify-center opacity-70 text-[13px]"
 				>
 					{{ i.id }}
 				</p>
@@ -31,7 +31,7 @@
 		</div>
 	</template>
 	<div
-		class="z-[999] sticky bottom-0 bg-neutral-700 border-t border-neutral-600"
+		class="z-[999] sticky bottom-0 bg-neutral-700 border-t border-neutral-900"
 		v-if="currentPlayingId || loading"
 	>
 		<div
@@ -94,13 +94,13 @@
 									: '';
 							}
 						"
-						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-600 aspect-square hover:bg-neutral-600"
+						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-900 aspect-square hover:bg-neutral-400/80 bg-neutral-300/80 text-neutral-900"
 					>
 						<div
-							class="opacity-70 -mt-[0.5px] flex"
+							class="-mt-[0.5px] flex"
 						>
 							<Icon
-								name="lucide:skip-back"
+								name="ion:md-skip-backward"
 								size="1rem"
 							/>
 						</div>
@@ -115,14 +115,14 @@
 									: pauseAudio();
 							}
 						"
-						class="h-14 w-14 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-600 aspect-square hover:bg-neutral-600"
+						class="h-14 w-14 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-900 aspect-square bg-neutral-300/80 text-neutral-900 hover:bg-neutral-400/80"
 					>
 						<div
 							class="-mt-0.5 ml-[1px]"
 							v-if="pause"
 						>
 							<Icon
-								name="lucide:play"
+								name="ion:md-play"
 								size="1.5rem"
 							/>
 						</div>
@@ -131,7 +131,7 @@
 							v-if="!pause"
 						>
 							<Icon
-								name="lucide:pause"
+								name="ion:md-pause"
 								size="1.5rem"
 							/>
 						</div>
@@ -146,13 +146,13 @@
 									: '';
 							}
 						"
-						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-600 aspect-square hover:bg-neutral-600"
+						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-900 aspect-square bg-neutral-300/80 text-neutral-900 hover:bg-neutral-400/80"
 					>
 						<div
-							class="opacity-70 -mt-[0.5px] flex"
+							class="-mt-[0.5px] flex"
 						>
 							<Icon
-								name="lucide:skip-forward"
+								name="ion:md-skip-forward"
 								size="1rem"
 							/>
 						</div>
@@ -191,7 +191,7 @@
 			>
 				<div></div>
 				<div
-					class="relative bottom-0 h-1 hover:h-2 transition-all duration-75 w-full bg-neutral-600 touch-none"
+					class="relative bottom-0 h-1 hover:h-2 transition-all duration-75 w-full bg-neutral-800 touch-none outline outline-neutral-900"
 				>
 					<div
 						v-if="sound && sound.duration()"

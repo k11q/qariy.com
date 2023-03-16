@@ -10,7 +10,7 @@
 					id="qari"
 					:value="reciterId"
 					@change="changeQari($event)"
-					class="focus:outline-none px-3 py-2 w-full overflow-ellipsis bg-neutral-700/40 border border-neutral-600 rounded"
+					class="focus:outline-none px-3 py-3 w-full overflow-ellipsis bg-neutral-600/50 hover:bg-neutral-700/50 border border-neutral-900 rounded"
 				>
 					<option
 						v-for="reciter in (reciters.reciters).sort((x, y)=>x.name.localeCompare(y.name))"
