@@ -31,7 +31,7 @@
 		</div>
 	</template>
 	<div
-		class="z-[999] sticky bottom-0  border-t border-neutral-900/70 bg-gradient-to-b from-neutral-500 to-neutral-600"
+		class="z-[999] sticky bottom-0  border-t-2 border-neutral-900/70 bg-gradient-to-b from-neutral-500 to-neutral-600"
 		v-if="currentPlayingId || loading"
 	>
 		<div
@@ -94,7 +94,7 @@
 									: '';
 							}
 						"
-						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border  aspect-square hover:opacity-80 border-neutral-900/70 bg-gradient-to-b from-neutral-300/80 to-neutral-200/40  text-neutral-900"
+						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border-2 aspect-square hover:opacity-80 border-neutral-900/70 bg-gradient-to-b from-neutral-300/80 to-neutral-200/40  text-neutral-900"
 					>
 						<div
 							class="-mt-[0.5px] flex"
@@ -115,7 +115,7 @@
 									: pauseAudio();
 							}
 						"
-						class="h-14 w-14 relative flex-none flex items-center justify-center rounded-full border border-neutral-900/70 aspect-square bg-gradient-to-b from-neutral-300/80 to-neutral-200/40 text-neutral-900 hover:opacity-80"
+						class="h-14 w-14 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-900/70 aspect-square bg-gradient-to-b from-neutral-300/80 to-neutral-200/40 text-neutral-900 hover:opacity-80"
 					>
 						<div
 							class="-mt-0.5 ml-[1px]"
@@ -146,7 +146,7 @@
 									: '';
 							}
 						"
-						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border border-neutral-900/70 aspect-square bg-gradient-to-b from-neutral-300/80 to-neutral-200/40 text-neutral-900 hover:opacity-80"
+						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-900/70 aspect-square bg-gradient-to-b from-neutral-300/80 to-neutral-200/40 text-neutral-900 hover:opacity-80"
 					>
 						<div
 							class="-mt-[0.5px] flex"
@@ -191,7 +191,7 @@
 			>
 				<div></div>
 				<div
-					class="relative bottom-0 h-1 hover:h-2 transition-all duration-75 w-full bg-gradient-to-t from-neutral-700/80  to-neutral-800/90 touch-none outline outline-1 outline-neutral-900/70"
+					class="relative bottom-0 h-1 hover:h-2 transition-all duration-75 w-full bg-gradient-to-t from-neutral-700/80  to-neutral-800/90 touch-none outline outline-neutral-900/70"
 				>
 					<div
 						v-if="sound && sound.duration()"
