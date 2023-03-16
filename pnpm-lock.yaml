@@ -4,11 +4,13 @@ specifiers:
   '@nuxtjs/tailwindcss': ^6.6.0
   howler: ^2.2.3
   nuxt: ^3.1.1
+  nuxt-headlessui: ^1.1.1
   nuxt-icon: ^0.3.3
 
 dependencies:
   '@nuxtjs/tailwindcss': 6.6.0
   howler: 2.2.3
+  nuxt-headlessui: 1.1.1
   nuxt-icon: 0.3.3
 
 devDependencies:
@@ -1071,6 +1073,13 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@headlessui/vue/1.7.12:
+    resolution: {integrity: sha512-IV0k1I2I8Bj37HljFF231Y9cpldfiucf+inMCxA/VPoQT6UTxo0N/rb78CrogBxXNfsPxKmz3y/nlv+eRz6zvg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      vue: ^3.2.0
+    dev: false
 
   /@iconify/types/2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -4255,6 +4264,18 @@ packages:
     transitivePeerDependencies:
       - rollup
       - supports-color
+    dev: false
+
+  /nuxt-headlessui/1.1.1:
+    resolution: {integrity: sha512-sf8qZQvGDaI+uNnKuynFGY+VXScDNEj3W0LMjv2XH4jO4ksQzbliCB9Hl5cdd/VIFPVmnZm+dnneURSI4/1fXw==}
+    dependencies:
+      '@headlessui/vue': 1.7.12
+      '@nuxt/kit': 3.3.1
+      pathe: 1.1.0
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+      - vue
     dev: false
 
   /nuxt-icon/0.3.3:

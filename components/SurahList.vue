@@ -23,7 +23,10 @@
 				</p>
 			</div>
 			<p class="flex-grow">
-				{{ i.id != 80 ? i.name : "Abasa" }}
+				{{ i.name}}
+			</p>
+			<p class="w-20 flex-none text-right opacity-70 text-[13px]">
+				{{formatTime(i.audio[0].duration)}}
 			</p>
 		</div>
 	</template>
@@ -31,7 +34,9 @@
 		class="z-[999] sticky bottom-0 bg-neutral-700 border-t border-neutral-600"
 		v-if="currentPlayingId || loading"
 	>
-		<div class="px-4 py-3 flex flex-row">
+		<div
+			class="px-4 py-3 flex flex-row justify-between items-center"
+		>
 			<div v-if="chapters || loading">
 				<p class="text-[11px] leading-4 opacity-70">
 					Now playing:
@@ -40,8 +45,7 @@
 					{{
 						loading
 							? "loading..."
-							: currentPlayingId != 80
-							? chapters.suwar[
+							: chapters.suwar[
 									chapters.suwar.findIndex(
 										(
 											i
@@ -50,9 +54,15 @@
 											currentPlayingId
 									)
 							  ].name
-							: "Abasa"
 					}}
 				</p>
+			</div>
+			<div>
+				<Icon
+					name="lucide:repeat"
+					size="1.25rem"
+					class="text-green-400 mb-1"
+				/>
 			</div>
 		</div>
 		<div class="p-4 flex flex-col relative">
@@ -62,7 +72,13 @@
 				<p
 					class="col-span-2 text-[13px] opacity-70 self-start"
 				>
-					{{ currentSeek ? formatTime(currentSeek) : '00:00' }}
+					{{
+						currentSeek
+							? formatTime(
+									currentSeek
+							  )
+							: "00:00"
+					}}
 				</p>
 				<div
 					class="flex col-span-5 items-center justify-center gap-4"
@@ -77,7 +93,7 @@
 									: '';
 							}
 						"
-						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-600 aspect-square"
+						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-600 aspect-square hover:bg-neutral-600"
 					>
 						<div
 							class="opacity-70 -mt-[0.5px] flex"
@@ -98,7 +114,7 @@
 									: pauseAudio();
 							}
 						"
-						class="h-14 w-14 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-600 aspect-square"
+						class="h-14 w-14 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-600 aspect-square hover:bg-neutral-600"
 					>
 						<div
 							class="-mt-0.5 ml-[1px]"
@@ -129,7 +145,7 @@
 									: '';
 							}
 						"
-						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-600 aspect-square"
+						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-600 aspect-square hover:bg-neutral-600"
 					>
 						<div
 							class="opacity-70 -mt-[0.5px] flex"
@@ -144,7 +160,13 @@
 				<p
 					class="col-span-2 text-right text-[13px] opacity-70 self-start"
 				>
-					{{ currentDuration ? formatTime(currentDuration) : '00:00' }}
+					{{currentDuration}}{{
+						currentDuration
+							? formatTime(
+									currentDuration
+							  )
+							: "00:00"
+					}}
 				</p>
 				<!--
 			<button @click="forward">Forward 10s</button>
@@ -170,11 +192,12 @@
 				<div
 					class="relative bottom-0 h-1 hover:h-2 transition-all duration-75 w-full bg-neutral-600 touch-none"
 				>
-					<div	v-if="sound && sound.duration()"
-						class="absolute left-0 top-0 bottom-0 bg-green-500 transition-all touch-none"
+					<div
+						v-if="sound && sound.duration()"
+						class="absolute left-0 top-0 bottom-0 bg-green-500 transition-all duration-75 touch-none"
 						:style="`width: calc(${
 							(currentSeek /
-							currentDuration) *
+								currentDuration) *
 							windowWidth
 						}px)`"
 					></div>
@@ -188,7 +211,7 @@
 					:max="currentDuration"
 					:step="0.01"
 					:value="currentSeek"
-					@input="seek"
+					@input="sound.seek($event.target.value)"
 				/>
 			</div>
 		</div>
@@ -197,6 +220,7 @@
 
 <script setup>
 import { Howl } from "howler";
+import chapters from "../db/chapters.json"
 
 const sound = ref(null);
 const currentPlayingId = ref(0);
@@ -211,13 +235,9 @@ onMounted(() => {
 	windowWidth = window.innerWidth > 448 ? 448 : window.innerWidth;
 });
 
-const { data: chapters } = await useAsyncData("chapters", async () =>
-	$fetch("https://mp3quran.net/api/v3/suwar?language=eng")
-);
-
 function playAudio(id) {
 	let num2 = id > 99 ? `${id}` : id > 9 ? `0${id}` : `00${id}`;
-	console.log(num2);
+	loading.value = true;
 	if (!sound.value || currentPlayingId.value != id) {
 		if (sound.value) {
 			sound.value.unload();
@@ -231,6 +251,7 @@ function playAudio(id) {
 			html5: true,
 		});
 	}
+	loading.value = false;
 	pause.value = false;
 	sound.value.play();
 	playing.value = true;
@@ -255,14 +276,12 @@ function playPrevSurah(num) {
 	} else playAudio(num - 1);
 }
 
-function seek(event) {}
-
-function formatTime(time){
+function formatTime(time) {
 	const minutes = Math.floor(time / 60);
-		const seconds = Math.round(time % 60);
-		return `${
-			minutes > 9 ? `${minutes}` : `0${minutes}`
-		}:${seconds > 9 ? `${seconds}` : `0${seconds}`}`
+	const seconds = Math.round(time % 60);
+	return `${minutes > 9 ? `${minutes}` : `0${minutes}`}:${
+		seconds > 9 ? `${seconds}` : `0${seconds}`
+	}`;
 }
 
 function updateSliderPosition() {
@@ -270,25 +289,27 @@ function updateSliderPosition() {
 		currentPlayingId.value &&
 		sound.value &&
 		playing.value &&
-		!pause.value
+		!pause.value && !loading.value
 	) {
 		currentSeek.value = sound.value.seek();
 		if (sound.value.duration()) {
 			if (!currentDuration.value) {
 				currentDuration.value = sound.value.duration();
 			}
-			if (
-				currentSeek.value >= currentDuration.value &&
-				currentDuration.value != 0
-			) {
+		}
+		if (
+			currentSeek.value+1 >= currentDuration.value &&
+			currentDuration.value != 0
+		) {
+			loading.value = true;
+			setTimeout(()=>{
 				playNextSurah(currentPlayingId.value);
-				pause.value = false;
-			}
+			},1000)
+			pause.value = false;
 		}
 		console.log("playing");
 	}
 	loading.value ? (pause.value = true) : "";
-
 	animationFrameId = requestAnimationFrame(updateSliderPosition);
 }
 
