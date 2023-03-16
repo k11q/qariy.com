@@ -1,15 +1,16 @@
 <template>
 	<div class="flex flex-col justify-center items-center">
 		<div
-			class="h-60 px-4 py-6 flex items-end justify-between bg-neutral-800 w-full max-w-md"
+			class="h-60 px-6 py-6 flex items-end justify-between bg-neutral-800 w-full max-w-md"
 		>
 			<p class="text-3xl font-semibold">Qari</p>
+				<div class="relative w-2/5 flex items-center">
 				<select
 					name="qari"
 					id="qari"
 					:value="reciterId"
 					@change="changeQari($event)"
-					class="bg-transparent focus:outline-none px-1 py-2 w-2/5 overflow-ellipsis"
+					class="focus:outline-none px-2 py-2 max-w-full overflow-ellipsis bg-neutral-700/40 border border-neutral-600 rounded"
 				>
 					<option
 						v-for="reciter in (reciters.reciters).sort((x, y)=>x.name.localeCompare(y.name))"
@@ -17,7 +18,10 @@
 					>
 						{{ reciter.name }}
 					</option>
+					
 				</select>
+				<Icon name="lucide:chevron-down" class="absolute right-0 mr-2"/>
+			</div>
 		</div>
 		<div
 			class="flex flex-col max-w-md w-full flex-grow bg-neutral-900"
@@ -27,6 +31,19 @@
 		</div>
 	</div>
 </template>
+
+<style>
+select::-ms-expand {
+    display: none;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+</style>
 
 <script setup>
 const openModal = useState("openModal");
