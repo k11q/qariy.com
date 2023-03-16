@@ -2,7 +2,7 @@
 	<template v-if="chapters">
 		<div
 			v-for="(i, index) in chapters.suwar"
-			class="flex flex-none items-center justify-center bg-neutral-900 px-6 py-4 cursor-default hover:bg-neutral-800"
+			:class="`flex flex-none items-center justify-center bg-neutral-900 px-6 py-4 cursor-default hover:bg-neutral-800 ${i.id == audioPlaying ? 'opacity-60 bg-neutral-800' : ''}`"
 			@click="handleFetch(i.id)"
 		>
 			<p class="w-16">{{ i.id }}</p>
@@ -12,11 +12,11 @@
 		</div>
 	</template>
 	<div
-		class="z-[999] sticky bottom-0 bg-neutral-800"
+		class="z-[999] sticky bottom-0 bg-neutral-800 border-t border-neutral-700"
 		v-show="audioPlaying"
 	>
-		<div class="p-4 flex flex-col">
-			<p v-if="chapters && audioPlaying">
+	<div class="p-4 flex flex-row">
+		<p v-if="chapters && audioPlaying">
 				Now playing:
 				{{
 					chapters.suwar[
@@ -28,6 +28,8 @@
 					].name
 				}}
 			</p>
+	</div>
+		<div class="p-4 flex flex-col relative">
 
 			<div
 				class="flex items-center justify-center gap-3"
