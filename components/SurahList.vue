@@ -160,7 +160,7 @@
 				<p
 					class="col-span-2 text-right text-[13px] opacity-70 self-start"
 				>
-					{{currentDuration}}{{
+					{{
 						currentDuration
 							? formatTime(
 									currentDuration
