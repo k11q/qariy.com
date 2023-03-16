@@ -50,7 +50,7 @@
 		<div class="p-4 flex flex-col relative">
 			<div
 				class="grid grid-cols-9 items-center justify-center gap-3"
-				v-show="audioPlaying"
+				v-show="audioPlaying || loading"
 			>
 				<p
 					class="col-span-2 text-[13px] opacity-70 self-start"
