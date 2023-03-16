@@ -59,7 +59,6 @@
 				</p>
 			</div>
 			<div>
-			{{ currentDuration }}
 				<Icon
 					name="lucide:repeat"
 					size="1.25rem"
@@ -230,6 +229,7 @@ onMounted(()=>{
 		currentQariData.value = JSON.parse(localStorage.getItem("qari-store"))
 	}
 })
+
 const sound = ref(null);
 const currentPlayingId = ref(0);
 const pause = ref(false);
