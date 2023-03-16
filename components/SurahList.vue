@@ -7,7 +7,7 @@
 					? 'opacity-60 bg-neutral-800'
 					: ''
 			}`"
-			@click="handleFetch(i.id)"
+			@click="()=>{i.id != audioPlaying ? handleFetch(i.id) : ''}"
 		>
 			<div class="flex flex-none">
 				<p
