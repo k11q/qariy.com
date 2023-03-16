@@ -321,12 +321,11 @@ function updateSliderPosition() {
 		if (elapsedTime.value >= audio.value.duration) {
 			playSound = null;
 			audio.value = null;
+			playNextSurah(parseInt(audioPlaying.value))
 			pauseTime.value = 0;
-			audioPlaying.value = "";
+			//audioPlaying.value = "";
 			pause.value = false;
 			seekValue = 0;
-			playNextSurah(parseInt(audioPlaying.value))
-			console.log("done");
 		}
 	}
 	loading.value ? pause.value = true : ''
