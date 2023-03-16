@@ -191,7 +191,7 @@
 			>
 				<div></div>
 				<div
-					class="relative bottom-0 h-1 hover:h-2 transition-all duration-75 w-full bg-gradient-to-t from-neutral-800/50  to-neutral-900 touch-none outline outline-neutral-900"
+					class="relative bottom-0 h-1 hover:h-2 transition-all duration-75 w-full bg-gradient-to-t from-neutral-700/80  to-neutral-800/90 touch-none outline outline-neutral-900/70"
 				>
 					<div
 						v-if="sound && sound.duration()"
