@@ -92,7 +92,7 @@
 						class="h-14 w-14 relative flex-none flex items-center justify-center rounded-full border border-neutral-700 aspect-square"
 					>
 						<div
-							class="-mt-0.5"
+							class="-mt-0.5 ml-[1px]"
 							v-if="pause"
 						>
 							<Icon
