@@ -31,7 +31,7 @@
 		</div>
 	</template>
 	<div
-		class="z-[999] sticky bottom-0  border-t-2 border-neutral-900/70 bg-gradient-to-b from-neutral-500 via-neutral-600 to-neutral-600"
+		class="z-[999] sticky bottom-0  border-t border-neutral-900/70 bg-gradient-to-b from-neutral-500 to-neutral-600"
 		v-if="currentPlayingId || loading"
 	>
 		<div
@@ -191,7 +191,7 @@
 			>
 				<div></div>
 				<div
-					class="relative bottom-0 h-1 hover:h-2 transition-all duration-75 w-full bg-gradient-to-t from-neutral-700/80  to-neutral-800/90 touch-none outline outline-neutral-900/70"
+					class="relative bottom-0 h-[6px] hover:h-2 transition-all duration-75 w-full bg-gradient-to-t from-neutral-700/80  to-neutral-800/90 touch-none outline outline-1 outline-neutral-900/70"
 				>
 					<div
 						v-if="sound && sound.duration()"
