@@ -26,7 +26,7 @@
 			<p class="flex-grow">
 				{{ i.name}}
 			</p>
-			<p class="w-20 flex-none text-right opacity-70 text-[13px]  font-mono tracking-wide">
+			<p class="w-20 flex-none text-right opacity-70 text-[13px] tabular-nums	lining-nums tracking-wide">
 				{{formatTime(i.audio[0].duration)}}
 			</p>
 		</div>
@@ -72,7 +72,7 @@
 				class="grid grid-cols-9 items-center justify-center gap-3"
 			>
 				<p
-					class="col-span-2 text-[13px] opacity-70 self-start font-mono  tracking-wide"
+					class="col-span-2 text-[13px] opacity-70 self-start tabular-nums	lining-nums tracking-wide"
 				>
 					{{
 						currentSeek
@@ -160,7 +160,7 @@
 					</div>
 				</div>
 				<p
-					class="col-span-2 text-right text-[13px] opacity-70 self-start  font-mono  tracking-wide"
+					class="col-span-2 text-right text-[13px] opacity-70 self-start tabular-nums	lining-nums tracking-wide"
 				>
 					{{
 						currentDuration
