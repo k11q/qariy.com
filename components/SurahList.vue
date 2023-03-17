@@ -95,7 +95,7 @@
 									: '';
 							}
 						"
-						class="h-11 w-11 relative flex-none flex items-center justify-center rounded-full border-1 aspect-square hover-hover:hover:opacity-80 border-neutral-900/70 shadow-[0_1px_4px_1px_rgba(0,0,0,0.4)] hover-hover:hover:shadow-[0_2px_2px_0px_rgba(0,0,0,0.6)_inset] bg-gradient-to-b from-neutral-100/90 to-neutral-200/20  text-neutral-900"
+						class="h-11 w-11 relative flex-none flex items-center justify-center rounded-full border-1 aspect-square hover-hover:hover:opacity-80 border-neutral-900/70 shadow-[0_1px_3px_0px_rgba(0,0,0,0.4)] hover-hover:hover:shadow-[0_2px_2px_0px_rgba(0,0,0,0.6)_inset] bg-gradient-to-b from-neutral-100/90 to-neutral-200/20  text-neutral-900"
 					>
 						<div
 							class="-mt-[0.5px] flex"
@@ -116,7 +116,7 @@
 									: pauseAudio();
 							}
 						"
-						class="h-14 w-14 relative flex-none flex items-center justify-center rounded-full border-1 border-neutral-900/70 aspect-square shadow-[0_1px_4px_1px_rgba(0,0,0,0.4)] hover-hover:hover:shadow-[0_2px_2px_0px_rgba(0,0,0,0.6)_inset] bg-gradient-to-b from-neutral-100/90 to-neutral-200/20 text-neutral-900 hover-hover:hover:opacity-80"
+						class="h-14 w-14 relative flex-none flex items-center justify-center rounded-full border-1 border-neutral-900/70 aspect-square shadow-[0_1px_3px_0_rgba(0,0,0,0.4)] hover-hover:hover:shadow-[0_2px_2px_0px_rgba(0,0,0,0.6)_inset] bg-gradient-to-b from-neutral-100/90 to-neutral-200/20 text-neutral-900 hover-hover:hover:opacity-80"
 					>
 						<div
 							class="-mt-0.5 ml-[1px]"
@@ -147,7 +147,7 @@
 									: '';
 							}
 						"
-						class="h-11 w-11 relative flex-none flex items-center justify-center rounded-full border-1 border-neutral-900/70 aspect-square shadow-[0_1px_4px_1px_rgba(0,0,0,0.4)] hover-hover:hover:shadow-[0_2px_2px_0px_rgba(0,0,0,0.6)_inset] bg-gradient-to-b from-neutral-100/90 to-neutral-200/20 text-neutral-900 hover-hover:hover:opacity-80"
+						class="h-11 w-11 relative flex-none flex items-center justify-center rounded-full border-1 border-neutral-900/70 aspect-square shadow-[0_1px_3px_0_rgba(0,0,0,0.4)] hover-hover:hover:shadow-[0_2px_2px_0px_rgba(0,0,0,0.6)_inset] bg-gradient-to-b from-neutral-100/90 to-neutral-200/20 text-neutral-900 hover-hover:hover:opacity-80"
 					>
 						<div
 							class="-mt-[0.5px] flex"
