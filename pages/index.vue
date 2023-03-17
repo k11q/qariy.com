@@ -1,9 +1,9 @@
 <template>
 	<div class="flex flex-col justify-center items-center">
 		<div
-			class="h-60 px-5 py-5 flex flex-col justify-end items-start gap-6 bg-neutral-800 w-full max-w-md"
+			class="h-52 px-5 py-5 flex flex-col justify-end items-start gap-4 bg-neutral-800 w-full max-w-md"
 		>
-			<p class="text-3xl font-semibold ml-3">Qari</p>
+			<p class="text-3xl font-semibold ml-3">Qariy</p>
 				<div class="relative w-full flex items-center">
 				<select
 					name="qari"

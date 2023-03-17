@@ -83,7 +83,7 @@
 					}}
 				</p>
 				<div
-					class="flex col-span-5 items-center justify-center gap-4"
+					class="flex col-span-5 items-center justify-center gap-2"
 				>
 					<div
 						@click="
@@ -95,14 +95,14 @@
 									: '';
 							}
 						"
-						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border-2 aspect-square hover:opacity-80 border-neutral-900/70 bg-gradient-to-b from-neutral-300/80 to-neutral-200/40  text-neutral-900"
+						class="h-11 w-11 relative flex-none flex items-center justify-center rounded-full border-1 aspect-square hover:opacity-80 border-neutral-900/70 shadow-[0_1px_4px_1px_rgba(0,0,0,0.4)] hover:shadow-[0_2px_2px_0px_rgba(0,0,0,0.6)_inset] bg-gradient-to-b from-neutral-100/90 to-neutral-200/20  text-neutral-900"
 					>
 						<div
 							class="-mt-[0.5px] flex"
 						>
 							<Icon
 								name="ion:md-skip-backward"
-								size="1rem"
+								size="1.25rem"
 							/>
 						</div>
 					</div>
@@ -116,7 +116,7 @@
 									: pauseAudio();
 							}
 						"
-						class="h-14 w-14 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-900/70 aspect-square bg-gradient-to-b from-neutral-300/80 to-neutral-200/40 text-neutral-900 hover:opacity-80"
+						class="h-14 w-14 relative flex-none flex items-center justify-center rounded-full border-1 border-neutral-900/70 aspect-square shadow-[0_1px_4px_1px_rgba(0,0,0,0.4)] hover:shadow-[0_2px_2px_0px_rgba(0,0,0,0.6)_inset] bg-gradient-to-b from-neutral-100/90 to-neutral-200/20 text-neutral-900 hover:opacity-80"
 					>
 						<div
 							class="-mt-0.5 ml-[1px]"
@@ -124,7 +124,7 @@
 						>
 							<Icon
 								name="ion:md-play"
-								size="1.5rem"
+								size="1.875rem"
 							/>
 						</div>
 						<div
@@ -133,7 +133,7 @@
 						>
 							<Icon
 								name="ion:md-pause"
-								size="1.5rem"
+								size="1.875rem"
 							/>
 						</div>
 					</div>
@@ -147,14 +147,14 @@
 									: '';
 							}
 						"
-						class="h-10 w-10 relative flex-none flex items-center justify-center rounded-full border-2 border-neutral-900/70 aspect-square bg-gradient-to-b from-neutral-300/80 to-neutral-200/40 text-neutral-900 hover:opacity-80"
+						class="h-11 w-11 relative flex-none flex items-center justify-center rounded-full border-1 border-neutral-900/70 aspect-square shadow-[0_1px_4px_1px_rgba(0,0,0,0.4)] hover:shadow-[0_2px_2px_0px_rgba(0,0,0,0.6)_inset] bg-gradient-to-b from-neutral-100/90 to-neutral-200/20 text-neutral-900 hover:opacity-80"
 					>
 						<div
 							class="-mt-[0.5px] flex"
 						>
 							<Icon
 								name="ion:md-skip-forward"
-								size="1rem"
+								size="1.25rem"
 							/>
 						</div>
 					</div>
