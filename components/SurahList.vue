@@ -213,7 +213,7 @@
 					:max="currentDuration"
 					:step="0.01"
 					:value="currentSeek"
-					@input="sound.seek($event.target.value)"
+					@input="sound.seek($event.target.value); pause ? pause = false || playAudio(currentPlayingId) : ''"
 				/>
 			</div>
 		</div>
