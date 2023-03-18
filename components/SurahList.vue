@@ -261,6 +261,7 @@ function playAudio(id) {
 	let num2 = id > 99 ? `${id}` : id > 9 ? `0${id}` : `00${id}`;
 	loading.value = true;
 	if (!sound.value || currentPlayingId.value != id) {
+		console.log('playaudioin')
 		if (sound.value) {
 			sound.value.unload();
 		}
@@ -290,7 +291,13 @@ function playAudio(id) {
 				error.value = true;
 			},
 		});
+	} else if(sound.value && pause.value){
+		console.log("playing")
+		sound.value.play()
+		pause.value = false;
+		playing.value = true;
 	}
+	loading.value = false;
 }
 
 watch(
