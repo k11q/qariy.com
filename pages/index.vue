@@ -24,6 +24,7 @@
 					class="focus:outline-none px-3 py-3 w-full overflow-ellipsis bg-gradient-to-b from-neutral-600 to-neutral-700 hover:opacity-80 border-2 border-neutral-900/70 rounded-md"
 				>
 					<option
+						class="bg-neutral-900"
 						v-for="reciter in reciters.reciters.sort(
 							(x, y) =>
 								x.name.localeCompare(
@@ -66,6 +67,11 @@ select {
 <script setup>
 const openModal = useState("openModal");
 const currentQariData = useState("currentQariData", () => null);
+currentQariData.value = {
+	id: 5,
+	name: "Ahmad Al-Ajmy",
+	link: "https://server10.mp3quran.net/ajm/",
+};
 const error = useState("error", () => false);
 
 let storage;
