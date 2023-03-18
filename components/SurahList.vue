@@ -19,27 +19,37 @@
 				<p
 					class="h-10 w-10 flex-none bg-neutral-900 rounded-full border-2 border-neutral-700 flex items-center justify-center opacity-70 text-[13px]"
 				>
-				<Icon name="ion:volume-high" class="text-green-400" v-if="i.id == currentPlayingId" size="1.125rem"/>
-					{{ i.id != currentPlayingId ? i.id : ""}}
+					<Icon
+						name="ion:volume-high"
+						class="text-green-400"
+						v-if="i.id == currentPlayingId"
+						size="1.125rem"
+					/>
+					{{
+						i.id != currentPlayingId
+							? i.id
+							: ""
+					}}
 				</p>
 			</div>
 			<p class="flex-grow">
-				{{ i.name}}
+				{{ i.name }}
 			</p>
-			<p class="w-20 flex-none text-right opacity-70 text-[13px] tabular-nums	lining-nums tracking-wide">
-				{{formatTime(i.audio[0].duration)}}
+			<p
+				class="w-20 flex-none text-right opacity-70 text-[13px] tabular-nums lining-nums tracking-wide"
+			>
+				{{ formatTime(i.audio[0].duration) }}
 			</p>
 		</div>
 	</template>
 	<div
-		class="z-[999] sticky bottom-0  border-t border-neutral-900/70 bg-gradient-to-b from-neutral-500 to-neutral-600"
+		class="z-[999] sticky bottom-0 border-t border-neutral-900/70 bg-gradient-to-b from-neutral-500 to-neutral-600"
 		v-if="currentPlayingId || loading"
 	>
 		<div
 			class="px-4 py-3 flex flex-row justify-between items-center"
 		>
 			<div v-if="chapters || loading">
-				
 				<p>
 					{{
 						loading
@@ -56,7 +66,7 @@
 					}}
 				</p>
 				<p class="text-[11px] leading-4 opacity-70">
-					{{currentQariData.name}}
+					{{ currentQariData.name }}
 				</p>
 			</div>
 			<div>
@@ -72,7 +82,7 @@
 				class="grid grid-cols-9 items-center justify-center gap-3"
 			>
 				<p
-					class="col-span-2 text-[13px] opacity-70 self-start tabular-nums	lining-nums tracking-wide"
+					class="col-span-2 text-[13px] opacity-70 self-start tabular-nums lining-nums tracking-wide"
 				>
 					{{
 						currentSeek
@@ -95,11 +105,9 @@
 									: '';
 							}
 						"
-						class="h-11 w-11 relative flex-none flex items-center justify-center rounded-full border-1 aspect-square hover-hover:hover:opacity-80 border-neutral-900/70 shadow-[0_1px_3px_0px_rgba(0,0,0,0.4)] hover-hover:hover:shadow-[0_2px_2px_0px_rgba(0,0,0,0.6)_inset] bg-gradient-to-b from-neutral-100/90 to-neutral-200/20  text-neutral-900"
+						class="h-11 w-11 relative flex-none flex items-center justify-center rounded-full border-1 aspect-square hover-hover:hover:opacity-80 border-neutral-900/70 shadow-[0_1px_3px_0px_rgba(0,0,0,0.4)] hover-hover:hover:shadow-[0_2px_2px_0px_rgba(0,0,0,0.6)_inset] bg-gradient-to-b from-neutral-100/90 to-neutral-200/20 text-neutral-900"
 					>
-						<div
-							class="-mt-[0.5px] flex"
-						>
+						<div class="-mt-[0.5px] flex">
 							<Icon
 								name="ion:md-skip-backward"
 								size="1.25rem"
@@ -149,9 +157,7 @@
 						"
 						class="h-11 w-11 relative flex-none flex items-center justify-center rounded-full border-1 border-neutral-900/70 aspect-square shadow-[0_1px_3px_0_rgba(0,0,0,0.4)] hover-hover:hover:shadow-[0_2px_2px_0px_rgba(0,0,0,0.6)_inset] bg-gradient-to-b from-neutral-100/90 to-neutral-200/20 text-neutral-900 hover-hover:hover:opacity-80"
 					>
-						<div
-							class="-mt-[0.5px] flex"
-						>
+						<div class="-mt-[0.5px] flex">
 							<Icon
 								name="ion:md-skip-forward"
 								size="1.25rem"
@@ -160,7 +166,7 @@
 					</div>
 				</div>
 				<p
-					class="col-span-2 text-right text-[13px] opacity-70 self-start tabular-nums	lining-nums tracking-wide"
+					class="col-span-2 text-right text-[13px] opacity-70 self-start tabular-nums lining-nums tracking-wide"
 				>
 					{{
 						currentDuration
@@ -192,7 +198,7 @@
 			>
 				<div></div>
 				<div
-					class="relative bottom-0 h-[6px] hover-hover:hover:h-2 transition-all duration-75 w-full bg-gradient-to-t from-neutral-700/80  to-neutral-800/90 touch-none outline outline-1 outline-neutral-900/70"
+					class="relative bottom-0 h-[6px] hover-hover:hover:h-2 transition-all duration-75 w-full bg-gradient-to-t from-neutral-700/80 to-neutral-800/90 touch-none outline outline-1 outline-neutral-900/70"
 				>
 					<div
 						v-if="sound && sound.duration()"
@@ -213,7 +219,16 @@
 					:max="currentDuration"
 					:step="0.01"
 					:value="currentSeek"
-					@input="sound.seek($event.target.value); pause ? pause = false || playAudio(currentPlayingId) : ''"
+					@input="
+						sound.seek($event.target.value);
+						pause
+							? (pause =
+									false ||
+									playAudio(
+										currentPlayingId
+									))
+							: '';
+					"
 				/>
 			</div>
 		</div>
@@ -222,14 +237,22 @@
 
 <script setup>
 import { Howl } from "howler";
-import chapters from "../db/chapters.json"
+import chapters from "../db/chapters.json";
 
-const currentQariData = ref()
-onMounted(()=>{
-	if (localStorage.getItem("qari-store")){
-		currentQariData.value = JSON.parse(localStorage.getItem("qari-store"))
+const currentQariData = ref();
+onMounted(() => {
+	if (localStorage.getItem("qari-store")) {
+		currentQariData.value = JSON.parse(
+			localStorage.getItem("qari-store")
+		);
+	} else {
+		currentQariData.value = {
+			id: 5,
+			name: "AlAjmy",
+			link: "https://server10.mp3quran.net/ajm/",
+		};
 	}
-})
+});
 
 const sound = ref(null);
 const currentPlayingId = ref(0);
@@ -255,10 +278,12 @@ function playAudio(id) {
 		currentSeek.value = 0;
 		currentPlayingId.value = id;
 		let url;
-		if(currentQariData.value){
-			currentQariData.value = JSON.parse(localStorage.getItem("qari-store"))
+		if (currentQariData.value) {
+			currentQariData.value = JSON.parse(
+				localStorage.getItem("qari-store")
+			);
 			url = `${currentQariData.value.link}${num2}.mp3`;
-		}else{
+		} else {
 			url = `https://server10.mp3quran.net/ajm/${num2}.mp3`;
 		}
 		sound.value = new Howl({
@@ -304,7 +329,8 @@ function updateSliderPosition() {
 		currentPlayingId.value &&
 		sound.value &&
 		playing.value &&
-		!pause.value && !loading.value
+		!pause.value &&
+		!loading.value
 	) {
 		currentSeek.value = sound.value.seek();
 		if (sound.value.duration()) {
@@ -313,13 +339,13 @@ function updateSliderPosition() {
 			}
 		}
 		if (
-			currentSeek.value+1 >= currentDuration.value &&
+			currentSeek.value + 1 >= currentDuration.value &&
 			currentDuration.value != 0
 		) {
 			loading.value = true;
-			setTimeout(()=>{
+			setTimeout(() => {
 				playNextSurah(currentPlayingId.value);
-			},1000)
+			}, 1000);
 			pause.value = false;
 		}
 		console.log("playing");
