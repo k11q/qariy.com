@@ -7,8 +7,7 @@
 				content="A quran audio player"
 			/>
 		</Head>
-		<div
-			class="h-52 px-5 py-5 flex flex-col justify-end items-start gap-4 bg-neutral-800 w-full max-w-lg"
+		<div class="h-52 px-5 py-5 flex flex-col justify-end items-start gap-4 bg-neutral-800 w-full max-w-xl"
 		>
 			<p class="text-3xl font-semibold ml-3">Qariy</p>
 			<div class="relative w-full flex items-center">
@@ -43,7 +42,7 @@
 			</div>
 		</div>
 		<div
-			class="flex flex-col max-w-lg w-full flex-grow bg-neutral-900"
+			class="flex flex-col max-w-xl w-full flex-grow bg-neutral-900"
 		>
 			<QariList />
 			<SurahList />
