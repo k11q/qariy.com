@@ -25,7 +25,6 @@ const { data: reciters } = await useAsyncData("reciters", async () =>
 );
 
 const openModal = useState("openModal", () => false);
-const currentQari = useState("qari", () => 5);
 
 function setOpenModal() {
 	openModal.value = false;

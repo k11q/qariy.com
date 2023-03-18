@@ -52,7 +52,9 @@
 			<div v-if="chapters || loading">
 				<p :class="`${error ? 'text-red-500' : ''}`">
 					{{
-						error ? "Error. Please select a different reciter." : loading
+						error
+							? "Error. Please select a different reciter."
+							: loading
 							? "loading..."
 							: chapters.suwar[
 									chapters.suwar.findIndex(
@@ -70,11 +72,27 @@
 				</p>
 			</div>
 			<div>
-				<Icon
-					name="lucide:repeat"
-					size="1.25rem"
-					class="text-green-400 mb-1"
-				/>
+				<HeadlessSwitch
+					v-model="autoplay"
+					:class="
+						autoplay
+							? 'bg-green-500/80'
+							: 'bg-gradient-to-b from-neutral-600 to-neutral-700'
+					"
+					class="relative inline-flex h-6 w-12 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+				>
+					<span class="sr-only">Autoplay</span>
+					<span
+						aria-hidden="true"
+						:class="
+							autoplay
+								? 'translate-x-6'
+								: 'translate-x-0'
+						"
+						class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-gradient-to-b from-neutral-100 to-neutral-200 shadow-sm ring-0 transition duration-400 ease-in-out"
+					/>
+				</HeadlessSwitch>
+				<p class="text-[11px] opacity-70 leading-3">Autoplay</p>
 			</div>
 		</div>
 		<div class="p-4 flex flex-col relative">
@@ -176,22 +194,6 @@
 							: "00:00"
 					}}
 				</p>
-				<!--
-			<button @click="forward">Forward 10s</button>
-			<button @click="backward">Backward 10s</button>
-			<div>
-				<label for="volume">Volume:</label>
-				<input
-					type="range"
-					id="volume"
-					name="volume"
-					min="0"
-					max="1"
-					step="0.1"
-					@input="changeVolume"
-				/>
-			</div>
-			-->
 			</div>
 			<div
 				class="absolute left-0 top-0 -translate-y-1/2 right-0 flex items-center"
@@ -240,8 +242,8 @@ import { Howl } from "howler";
 import chapters from "../db/chapters.json";
 
 const currentQariData = useState("currentQariData");
-const sound = useState("sound", ()=>null);;
-const currentPlayingId = useState("currentPlayingId", ()=>0);
+const sound = useState("sound", () => null);
+const currentPlayingId = useState("currentPlayingId", () => 0);
 const pause = ref(false);
 let animationFrameId;
 let windowWidth = 100;
@@ -250,6 +252,7 @@ const currentDuration = ref(0);
 const currentSeek = ref(0);
 const playing = ref(false);
 const error = useState("error");
+const autoplay = ref(true);
 onMounted(() => {
 	windowWidth = window.innerWidth > 448 ? 448 : window.innerWidth;
 });
@@ -290,18 +293,21 @@ function playAudio(id) {
 	}
 }
 
-watch(currentQariData,(curr, prev)=>{
-	console.log('changedqari')
-	if(prev && prev.id != curr.id){
-	if(currentPlayingId.value){
-		if (sound.value) {
-			sound.value.unload();
-			sound.value = null;
+watch(
+	currentQariData,
+	(curr, prev) => {
+		if (prev && prev.id != curr.id) {
+			if (currentPlayingId.value) {
+				if (sound.value) {
+					sound.value.unload();
+					sound.value = null;
+				}
+				playAudio(currentPlayingId.value);
+			}
 		}
-		playAudio(currentPlayingId.value)
-		console.log('inside')
-	}}
-}, {deep:true,immediate: true})
+	},
+	{ deep: true, immediate: true }
+);
 
 function pauseAudio() {
 	if (sound.value) {
@@ -346,7 +352,7 @@ function updateSliderPosition() {
 		}
 		if (
 			currentSeek.value + 1 >= currentDuration.value &&
-			currentDuration.value != 0
+			currentDuration.value != 0 && autoplay.value
 		) {
 			loading.value = true;
 			setTimeout(() => {
@@ -354,7 +360,6 @@ function updateSliderPosition() {
 			}, 1000);
 			pause.value = false;
 		}
-		console.log("playing");
 	}
 	loading.value ? (pause.value = true) : "";
 	animationFrameId = requestAnimationFrame(updateSliderPosition);
