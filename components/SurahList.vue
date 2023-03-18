@@ -50,9 +50,9 @@
 			class="px-4 py-3 flex flex-row justify-between items-center"
 		>
 			<div v-if="chapters || loading">
-				<p>
+				<p :class="`${error ? 'text-red-500' : ''}`">
 					{{
-						loading
+						error ? "Error. Please select a different reciter." : loading
 							? "loading..."
 							: chapters.suwar[
 									chapters.suwar.findIndex(
@@ -239,23 +239,9 @@
 import { Howl } from "howler";
 import chapters from "../db/chapters.json";
 
-const currentQariData = ref();
-onMounted(() => {
-	if (localStorage.getItem("qari-store")) {
-		currentQariData.value = JSON.parse(
-			localStorage.getItem("qari-store")
-		);
-	} else {
-		currentQariData.value = {
-			id: 5,
-			name: "AlAjmy",
-			link: "https://server10.mp3quran.net/ajm/",
-		};
-	}
-});
-
-const sound = ref(null);
-const currentPlayingId = ref(0);
+const currentQariData = useState("currentQariData");
+const sound = useState("sound", ()=>null);;
+const currentPlayingId = useState("currentPlayingId", ()=>0);
 const pause = ref(false);
 let animationFrameId;
 let windowWidth = 100;
@@ -263,6 +249,7 @@ const loading = ref(false);
 const currentDuration = ref(0);
 const currentSeek = ref(0);
 const playing = ref(false);
+const error = useState("error");
 onMounted(() => {
 	windowWidth = window.innerWidth > 448 ? 448 : window.innerWidth;
 });
@@ -289,13 +276,32 @@ function playAudio(id) {
 		sound.value = new Howl({
 			src: [url],
 			html5: true,
+			onload: () => {
+				loading.value = false;
+				pause.value = false;
+				sound.value.play();
+				playing.value = true;
+			},
+			preload: "metadata",
+			onloaderror: () => {
+				error.value = true;
+			},
 		});
 	}
-	loading.value = false;
-	pause.value = false;
-	sound.value.play();
-	playing.value = true;
 }
+
+watch(currentQariData,(curr, prev)=>{
+	console.log('changedqari')
+	if(prev && prev.id != curr.id){
+	if(currentPlayingId.value){
+		if (sound.value) {
+			sound.value.unload();
+			sound.value = null;
+		}
+		playAudio(currentPlayingId.value)
+		console.log('inside')
+	}}
+}, {deep:true,immediate: true})
 
 function pauseAudio() {
 	if (sound.value) {

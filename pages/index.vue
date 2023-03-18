@@ -8,7 +8,7 @@
 				<select
 					name="qari"
 					id="qari"
-					:value="reciterId"
+					:value="currentQariData ? currentQariData.id : 5"
 					@change="changeQari($event)"
 					class="focus:outline-none px-3 py-3 w-full overflow-ellipsis bg-gradient-to-b from-neutral-600 to-neutral-700 hover:opacity-80 border-2 border-neutral-900/70 rounded-md"
 				>
@@ -47,16 +47,15 @@ select {
 
 <script setup>
 const openModal = useState("openModal");
-const currentQari = useState("currentQari");
-const reciterId = ref(5)
+const currentQariData = useState("currentQariData", ()=>null);
+const error = useState("error", ()=>false);
 
 let storage;
 onMounted(() => {
 	if (localStorage.getItem("qari-store")) {
-		currentQari.value = JSON.parse(
+		currentQariData.value = JSON.parse(
 			localStorage.getItem("qari-store")
 		);
-		reciterId.value = id
 	} else {
 		localStorage.setItem("qari-store", JSON.stringify({
 			id: 5,
@@ -67,6 +66,9 @@ onMounted(() => {
 });
 
 function changeQari(event) {
+	if (error.value){
+		error.value = false;
+	}
 	if (!reciters.value) {
 		return;
 	}
@@ -74,6 +76,11 @@ function changeQari(event) {
 	const reciterData = reciters.value.reciters.find((i) => i.id == id);
 	const name = reciterData.name;
 	const link = reciterData.moshaf[reciterData.moshaf.length-1].server;
+	currentQariData.value = {
+		id: id,
+		name: name,
+		link: link,
+	}
 	storage = null;
 	localStorage.setItem("qari-store", JSON.stringify({
 		id: id,
