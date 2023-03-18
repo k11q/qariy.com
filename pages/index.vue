@@ -56,20 +56,11 @@ onMounted(() => {
 		currentQari.value = JSON.parse(
 			localStorage.getItem("qari-store")
 		);
-		const name = currentQari.value.name;
-		const id = currentQari.value.id;
 		reciterId.value = id
-		const link = currentQari.value.link;
-		const theDefault = {
-			name: name,
-			id: id,
-			link: link,
-		};
-		//storage = useStorage("qari-store", theDefault);
 	} else {
 		localStorage.setItem("qari-store", JSON.stringify({
 			id: 5,
-			name: "AlAjmy",
+			name: "Ahmad Al-Ajmy",
 			link: "https://server10.mp3quran.net/ajm/",
 		}));
 	}
@@ -81,7 +72,6 @@ function changeQari(event) {
 	}
 	const id = event.target.value;
 	const reciterData = reciters.value.reciters.find((i) => i.id == id);
-	console.log(reciterData);
 	const name = reciterData.name;
 	const link = reciterData.moshaf[reciterData.moshaf.length-1].server;
 	storage = null;
