@@ -254,7 +254,7 @@ const playing = ref(false);
 const error = useState("error");
 const autoplay = ref(true);
 onMounted(() => {
-	windowWidth = window.innerWidth > 448 ? 448 : window.innerWidth;
+	windowWidth = window.innerWidth > 576 ? 576 : window.innerWidth;
 });
 
 function playAudio(id) {
