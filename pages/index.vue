@@ -8,7 +8,7 @@
 			/>
 		</Head>
 		<div
-			class="h-52 px-5 py-5 flex flex-col justify-end items-start gap-4 bg-neutral-800 w-full max-w-md"
+			class="h-52 px-5 py-5 flex flex-col justify-end items-start gap-4 bg-neutral-800 w-full max-w-lg"
 		>
 			<p class="text-3xl font-semibold ml-3">Qariy</p>
 			<div class="relative w-full flex items-center">
@@ -43,7 +43,7 @@
 			</div>
 		</div>
 		<div
-			class="flex flex-col max-w-md w-full flex-grow bg-neutral-900"
+			class="flex flex-col max-w-lg w-full flex-grow bg-neutral-900"
 		>
 			<QariList />
 			<SurahList />
