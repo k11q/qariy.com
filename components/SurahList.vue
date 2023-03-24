@@ -17,7 +17,7 @@
 		>
 			<div class="flex flex-none">
 				<p
-					class="h-10 w-10 flex-none bg-neutral-900 rounded-full border-2 border-neutral-700 flex items-center justify-center opacity-70 text-[13px]"
+					class="h-10 w-10 flex-none rounded-full border-2 border-white/20 flex items-center justify-center opacity-90"
 				>
 					<Icon
 						name="ion:volume-high"
@@ -254,7 +254,7 @@ const playing = ref(false);
 const error = useState("error");
 const autoplay = ref(true);
 onMounted(() => {
-	windowWidth = window.innerWidth > 576 ? 576 : window.innerWidth;
+	windowWidth = window.innerWidth > 896 ? 896 : window.innerWidth;
 });
 
 function playAudio(id) {
