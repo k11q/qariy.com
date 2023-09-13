@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.6.0",
-    "@vercel/analytics": "^0.1.11",
     "@vueuse/nuxt": "^9.13.0",
     "howler": "^2.2.3",
     "nuxt-headlessui": "^1.1.1",
