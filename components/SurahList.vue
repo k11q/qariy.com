@@ -2,10 +2,10 @@
 	<template v-if="chapters">
 		<div
 			v-for="(i, index) in chapters.suwar"
-			:class="`flex flex-none gap-6 items-center justify-center  px-6 py-2 cursor-default ${
+			:class="`flex flex-none gap-6 items-center justify-center  px-6 py-1.5 cursor-default border-t border-neutral-700/70 ${
 				i.id == currentPlayingId
 					? 'bg-neutral-400/60 text-white/60'
-					: 'bg-neutral-700/40 even:bg-neutral-700/60 hover-hover:hover:bg-sky-200/80 [&>div>p]:hover-hover:hover:bg-sky-100/90 hover-hover:hover:text-neutral-900 '
+					: 'bg-neutral-600/40 even:bg-neutral-600/60 hover-hover:hover:bg-sky-200/80 hover-hover:hover:text-neutral-900 '
 			}`"
 			@click="
 				() => {
@@ -17,13 +17,13 @@
 		>
 			<div class="flex flex-none">
 				<p
-					class="h-10 w-10 flex-none rounded-full border-2 border-white/20 flex items-center justify-center opacity-90"
+					class="h-9 w-9 flex-none rounded-full flex items-center justify-center opacity-90 text-lg font-[320] text-neutral-500"
 				>
 					<Icon
 						name="ion:volume-high"
 						class="text-green-400"
 						v-if="i.id == currentPlayingId"
-						size="1.125rem"
+						size="1.75rem"
 					/>
 					{{
 						i.id != currentPlayingId
@@ -32,22 +32,22 @@
 					}}
 				</p>
 			</div>
-			<p class="flex-grow">
+			<p class="flex-grow text-[17px] tracking-[0.005rem]">
 				{{ i.name }}
 			</p>
 			<p
-				class="w-20 flex-none text-right opacity-70 text-[13px] tabular-nums lining-nums tracking-wide"
+				class="w-20 flex-none text-right text-neutral-500 lining-nums tracking-wide"
 			>
 				{{ formatTime(i.audio[0].duration) }}
 			</p>
 		</div>
 	</template>
 	<div
-		class="z-[999] sticky bottom-0 border-t border-neutral-900/70 bg-gradient-to-b from-neutral-500 to-neutral-600"
+		class="z-[999] sticky bottom-0 border-t border-neutral-900/70 bg-neutral-400 text-neutral-800"
 		v-if="currentPlayingId || loading"
 	>
 		<div
-			class="px-4 py-3 flex flex-row justify-between items-center"
+			class="px-4 pb-4 pt-2.5 flex flex-row justify-between items-center text-lg tracking-[0.005rem] font-semibold"
 		>
 			<div v-if="chapters || loading">
 				<p :class="`${error ? 'text-red-500' : ''}`">
@@ -67,7 +67,7 @@
 							  ].name
 					}}
 				</p>
-				<p class="text-[11px] leading-4 opacity-70">
+				<p class="text-sm leading-none opacity-70 font-medium">
 					{{ currentQariData.name }}
 				</p>
 			</div>
@@ -92,15 +92,15 @@
 						class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-gradient-to-b from-neutral-100 to-neutral-200 shadow-sm ring-0 transition duration-400 ease-in-out"
 					/>
 				</HeadlessSwitch>
-				<p class="text-[11px] opacity-70 leading-3">Autoplay</p>
+				<p class="text-xs opacity-70 leading-3 font-medium">Autoplay</p>
 			</div>
 		</div>
-		<div class="p-4 flex flex-col relative">
+		<div class="p-4 flex flex-col relative font-medium">
 			<div
 				class="grid grid-cols-9 items-center justify-center gap-3"
 			>
 				<p
-					class="col-span-2 text-[13px] opacity-70 self-start tabular-nums lining-nums tracking-wide"
+					class="col-span-2 text-[15px] opacity-70 self-start lining-nums tracking-wide"
 				>
 					{{
 						currentSeek
@@ -184,7 +184,7 @@
 					</div>
 				</div>
 				<p
-					class="col-span-2 text-right text-[13px] opacity-70 self-start tabular-nums lining-nums tracking-wide"
+					class="col-span-2 text-right text-[15px] opacity-70 self-start lining-nums tracking-wide"
 				>
 					{{
 						currentDuration

@@ -7,10 +7,12 @@
 				content="A quran audio player"
 			/>
 		</Head>
-		<div class="h-52 px-5 py-5 flex flex-col justify-end items-start gap-4 bg-neutral-800 w-full max-w-4xl"
+		<div class="px-5 py-3 flex items-center justify-between gap-2 bg-neutral-600 w-full max-w-4xl"
 		>
-			<p class="text-3xl font-semibold ml-3">Qariy</p>
-			<div class="relative w-full flex items-center">
+      <div class="h-14 text-neutral-400 pl-3 pb-1" aria-label="qariy.com">
+      <Logo />
+    </div>
+			<div class="relative flex items-center">
 				<select
 					name="qari"
 					id="qari"
@@ -20,10 +22,9 @@
 							: 5
 					"
 					@change="changeQari($event)"
-					class="focus:outline-none px-3 py-3 w-full overflow-ellipsis bg-gradient-to-b from-neutral-600 to-neutral-700 hover:opacity-80 border-2 border-neutral-900/70 rounded-md"
+					class="focus:outline-none px-3 py-2 overflow-ellipsis bg-neutral-800/80 font-[420] hover:opacity-80 text-neutral-300 rounded-lg pr-8 indent-7 truncate"
 				>
 					<option
-						class="bg-neutral-900"
 						v-for="reciter in reciters.reciters.sort(
 							(x, y) =>
 								x.name.localeCompare(
@@ -35,9 +36,10 @@
 						{{ reciter.name }}
 					</option>
 				</select>
+        <Icon name="lucide:user" class="absolute left-3 text-neutral-400" />
 				<Icon
 					name="lucide:chevron-down"
-					class="absolute right-0 mr-4"
+					class="absolute right-0 mr-4 text-neutral-400"
 				/>
 			</div>
 		</div>

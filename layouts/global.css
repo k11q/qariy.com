@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "Geist";
+  src: local("Geist"),
+   url(~/public/GeistVariableVF.woff2) format("woff2");
+}
+
+html {
+  font-family: "Geist";
+  font-feature-settings: "ss02" 1, "ss04" 1, "ss03" 1;
+}

@@ -7,5 +7,8 @@ export default defineNuxtConfig({
             crawlLinks: true,
             routes: ['/index.html']
           }
-        }
+        },
+        css: [
+          "~/layouts/global.css",
+        ],
 })
