@@ -5,7 +5,7 @@
       <Title>Qariy</Title>
       <Meta name="description" content="A quran audio player" />
     </Head>
-    <div class="px-5 py-3 flex items-center justify-between gap-2 bg-neutral-600 w-full max-w-4xl">
+    <div class="px-5 py-3 flex items-center justify-between gap-2 bg-gradient-to-b from-neutral-600 to-neutral-700 border-b-2 border-b-neutral-800/70 w-full max-w-4xl">
       <div class="h-14 text-neutral-400 pl-3 pb-1" aria-label="qariy.com">
         <Logo />
       </div>

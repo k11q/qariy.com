@@ -4,8 +4,8 @@
 			v-for="(i, index) in chapters.suwar"
 			:class="`flex flex-none gap-4 items-center justify-center pl-3 pr-6 h-11 cursor-default border-t-2 pb-0.5 ${
 				i.id == currentPlayingId
-					? 'bg-gradient-to-b from-neutral-800/90 to-neutral-800/40 text-[#89d666] border-neutral-800/30'
-					: 'bg-neutral-600/40 even:bg-neutral-600/60 hover-hover:hover:bg-sky-200/80 hover-hover:hover:text-neutral-900 text-neutral-300 border-neutral-700/70'
+					? 'bg-gradient-to-b from-neutral-800/90 to-neutral-800/40 text-[#89d666] border-neutral-800/40'
+					: 'bg-neutral-600/40 even:bg-neutral-600/60 hover-hover:hover:bg-sky-200/80 hover-hover:hover:text-neutral-900 text-neutral-300 border-neutral-800/40 even:border-neutral-700/40'
 			}`"
 			@click="
 				() => {
@@ -32,7 +32,7 @@
 					}}
 				</p>
 			</div>
-			<p class="flex-grow text-[17px] tracking-[0.005rem]">
+			<p class="flex-grow">
 				{{ i.name }}
 			</p>
 			<p
@@ -47,11 +47,11 @@
 		</div>
 	</template>
 	<div
-		class="z-[999] sticky bottom-0 border-t border-neutral-900/70 bg-gradient-to-b from-[#595959] to-[#505050] text-neutral-200"
+		class="z-[999] sticky bottom-0 border-t-2 border-neutral-400/20 bg-gradient-to-b from-[#595959] to-[#505050] text-neutral-200"
 		v-if="currentPlayingId || loading"
 	>
 		<div
-			class="px-4 pb-4 pt-2.5 flex flex-row justify-between items-center text-lg tracking-[0.005rem]"
+			class="px-4 pb-4 pt-2.5 flex flex-row justify-between items-center"
 		>
 			<div v-if="chapters || loading">
 				<p :class="`${error ? 'text-red-500' : ''}`">
@@ -71,7 +71,7 @@
 							  ].name
 					}}
 				</p>
-				<p class="text-sm leading-none opacity-70">
+				<p class="text-sm opacity-70">
 					{{ currentQariData.name }}
 				</p>
 			</div>
