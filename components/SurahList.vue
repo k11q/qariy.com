@@ -2,10 +2,10 @@
 	<template v-if="chapters">
 		<div
 			v-for="(i, index) in chapters.suwar"
-			:class="`flex flex-none gap-6 items-center justify-center  px-6 py-1.5 cursor-default border-t border-neutral-700/70 ${
+			:class="`flex flex-none gap-4 items-center justify-center pl-3 pr-6 h-11 cursor-default border-t-2 pb-0.5 ${
 				i.id == currentPlayingId
-					? 'bg-neutral-400/60 text-white/60'
-					: 'bg-neutral-600/40 even:bg-neutral-600/60 hover-hover:hover:bg-sky-200/80 hover-hover:hover:text-neutral-900 '
+					? 'bg-gradient-to-b from-neutral-800/90 to-neutral-800/40 text-[#89d666] border-neutral-800/30'
+					: 'bg-neutral-600/40 even:bg-neutral-600/60 hover-hover:hover:bg-sky-200/80 hover-hover:hover:text-neutral-900 text-neutral-300 border-neutral-700/70'
 			}`"
 			@click="
 				() => {
@@ -15,13 +15,13 @@
 				}
 			"
 		>
-			<div class="flex flex-none">
+			<div class="flex flex-none items-center">
 				<p
-					class="h-9 w-9 flex-none rounded-full flex items-center justify-center opacity-90 text-lg font-[320] text-neutral-500"
+					class="h-9 w-9 flex-none rounded-full flex items-center justify-center opacity-90 font-[320] text-neutral-500"
 				>
 					<Icon
 						name="ion:volume-high"
-						class="text-green-400"
+						class="text-[#7ccf56]"
 						v-if="i.id == currentPlayingId"
 						size="1.75rem"
 					/>
@@ -36,18 +36,22 @@
 				{{ i.name }}
 			</p>
 			<p
-				class="w-20 flex-none text-right text-neutral-500 lining-nums tracking-wide"
+				:class="`w-20 flex-none text-right lining-nums tracking-wide ${
+				i.id == currentPlayingId
+					? ''
+					: 'text-neutral-500'
+			}`"
 			>
 				{{ formatTime(i.audio[0].duration) }}
 			</p>
 		</div>
 	</template>
 	<div
-		class="z-[999] sticky bottom-0 border-t border-neutral-900/70 bg-neutral-400 text-neutral-800"
+		class="z-[999] sticky bottom-0 border-t border-neutral-900/70 bg-gradient-to-b from-[#595959] to-[#505050] text-neutral-200"
 		v-if="currentPlayingId || loading"
 	>
 		<div
-			class="px-4 pb-4 pt-2.5 flex flex-row justify-between items-center text-lg tracking-[0.005rem] font-semibold"
+			class="px-4 pb-4 pt-2.5 flex flex-row justify-between items-center text-lg tracking-[0.005rem]"
 		>
 			<div v-if="chapters || loading">
 				<p :class="`${error ? 'text-red-500' : ''}`">
@@ -67,7 +71,7 @@
 							  ].name
 					}}
 				</p>
-				<p class="text-sm leading-none opacity-70 font-medium">
+				<p class="text-sm leading-none opacity-70">
 					{{ currentQariData.name }}
 				</p>
 			</div>
@@ -76,7 +80,7 @@
 					v-model="autoplay"
 					:class="
 						autoplay
-							? 'bg-green-500/80'
+							? 'bg-[#6cbc46]'
 							: 'bg-gradient-to-b from-neutral-600 to-neutral-700'
 					"
 					class="relative inline-flex h-6 w-12 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
@@ -92,10 +96,10 @@
 						class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-gradient-to-b from-neutral-100 to-neutral-200 shadow-sm ring-0 transition duration-400 ease-in-out"
 					/>
 				</HeadlessSwitch>
-				<p class="text-xs opacity-70 leading-3 font-medium">Autoplay</p>
+				<p class="text-xs opacity-70 leading-3">Autoplay</p>
 			</div>
 		</div>
-		<div class="p-4 flex flex-col relative font-medium">
+		<div class="p-4 flex flex-col relative">
 			<div
 				class="grid grid-cols-9 items-center justify-center gap-3"
 			>
@@ -200,11 +204,11 @@
 			>
 				<div></div>
 				<div
-					class="relative bottom-0 h-[6px] hover-hover:hover:h-2 transition-all duration-75 w-full bg-gradient-to-t from-neutral-700/80 to-neutral-800/90 touch-none outline outline-1 outline-neutral-900/70"
+					class="relative bottom-0 h-2 hover-hover:hover:h-2 transition-all duration-75 w-full bg-gradient-to-t from-neutral-700/80 to-neutral-800/90 touch-none outline outline-1 outline-neutral-900/70"
 				>
 					<div
 						v-if="sound && sound.duration()"
-						class="absolute left-0 top-0 bottom-0 bg-green-500 transition-all duration-75 touch-none"
+						class="absolute left-0 top-0 bottom-0 bg-[#82d85a] transition-all duration-75 touch-none"
 						:style="`width: calc(${
 							(currentSeek /
 								currentDuration) *
