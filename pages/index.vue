@@ -34,7 +34,7 @@
     </div>
     <div class="flex justify-center items-center px-8 py-5 flex-col gap-y-3 text-center  bg-neutral-800 w-full max-w-4xl">
       <p class="text-neutral-400 text-sm">Built by <a class="font-medium text-blue-500"
-          href="https://github.com/khairulhaaziq">Khairul Haaziq</a> with ❤️ from 🇲🇾. If you have
+          href="https://github.com/k11q">Khairul Haaziq</a> with ❤️ from 🇲🇾. If you have
         any ideas to make this app better or
         interested in collaborating with me for any project, feel free to reach me at <a
           class="font-medium text-blue-500" href="mailto:khairul@haaziq.com">khairul@haaziq.com</a>.</p>
