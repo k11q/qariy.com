@@ -3,13 +3,15 @@
 		<div
 			v-for="(i, index) in chapters.suwar"
 			:class="`flex flex-none gap-4 items-center justify-center pl-3 pr-6 h-11 cursor-default border-t-2 pb-0.5 ${
-				i.id == currentPlayingId
-					? 'bg-gradient-to-b from-neutral-800/90 to-neutral-800/40 text-[#89d666] border-neutral-800/40'
-					: 'bg-neutral-600/40 even:bg-neutral-600/60 hover-hover:hover:bg-sky-200/80 hover-hover:hover:text-neutral-900 text-neutral-300 border-neutral-800/40 even:border-neutral-700/40'
+				!isSurahAvailable(i.id)
+					? 'bg-neutral-700/40 text-neutral-500 cursor-not-allowed border-neutral-800/40'
+					: i.id == currentPlayingId
+						? 'bg-gradient-to-b from-neutral-800/90 to-neutral-800/40 text-[#89d666] border-neutral-800/40'
+						: 'bg-neutral-600/40 even:bg-neutral-600/60 hover-hover:hover:bg-sky-200/80 hover-hover:hover:text-neutral-900 text-neutral-300 border-neutral-800/40 even:border-neutral-700/40'
 			}`"
 			@click="
 				() => {
-					i.id != currentPlayingId
+					isSurahAvailable(i.id) && i.id != currentPlayingId
 						? playAudio(i.id)
 						: '';
 				}
@@ -257,6 +259,17 @@ const currentSeek = ref(0);
 const playing = ref(false);
 const error = useState("error");
 const autoplay = ref(true);
+
+const availableSurahs = computed(() => {
+	if (!currentQariData.value || !currentQariData.value.surah_list) {
+		return new Set(Array.from({length: 114}, (_, i) => i + 1));
+	}
+	return new Set(currentQariData.value.surah_list.split(',').map(Number));
+});
+
+function isSurahAvailable(surahId) {
+	return availableSurahs.value.has(surahId);
+}
 onMounted(() => {
 	windowWidth = window.innerWidth > 896 ? 896 : window.innerWidth;
 });
@@ -289,6 +302,11 @@ function playAudio(id) {
 				pause.value = false;
 				sound.value.play();
 				playing.value = true;
+			},
+			onend: () => {
+				if (autoplay.value) {
+					playNextSurah(currentPlayingId.value);
+				}
 			},
 			preload: "metadata",
 			onloaderror: () => {
@@ -328,15 +346,19 @@ function pauseAudio() {
 }
 
 function playNextSurah(num) {
-	if (num == 114) {
-		playAudio(1);
-	} else playAudio(num + 1);
+	let nextNum = num == 114 ? 1 : num + 1;
+	while (nextNum !== num && !isSurahAvailable(nextNum)) {
+		nextNum = nextNum == 114 ? 1 : nextNum + 1;
+	}
+	playAudio(nextNum);
 }
 
 function playPrevSurah(num) {
-	if (num == 1) {
-		playAudio(114);
-	} else playAudio(num - 1);
+	let prevNum = num == 1 ? 114 : num - 1;
+	while (prevNum !== num && !isSurahAvailable(prevNum)) {
+		prevNum = prevNum == 1 ? 114 : prevNum - 1;
+	}
+	playAudio(prevNum);
 }
 
 function formatTime(time) {
@@ -360,16 +382,6 @@ function updateSliderPosition() {
 			if (!currentDuration.value) {
 				currentDuration.value = sound.value.duration();
 			}
-		}
-		if (
-			currentSeek.value + 1 >= currentDuration.value &&
-			currentDuration.value != 0 && autoplay.value
-		) {
-			loading.value = true;
-			setTimeout(() => {
-				playNextSurah(currentPlayingId.value);
-			}, 1000);
-			pause.value = false;
 		}
 	}
 	loading.value ? (pause.value = true) : "";

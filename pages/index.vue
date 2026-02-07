@@ -64,6 +64,7 @@ currentQariData.value = {
   id: 5,
   name: "Ahmad Al-Ajmy",
   link: "https://server10.mp3quran.net/ajm/",
+  surah_list: "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114",
 };
 const error = useState("error", () => false);
 
@@ -80,6 +81,7 @@ onMounted(() => {
         id: 5,
         name: "Ahmad Al-Ajmy",
         link: "https://server10.mp3quran.net/ajm/",
+        surah_list: "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114",
       })
     );
   }
@@ -95,11 +97,14 @@ function changeQari(event) {
   const id = event.target.value;
   const reciterData = reciters.value.reciters.find((i) => i.id == id);
   const name = reciterData.name;
-  const link = reciterData.moshaf[reciterData.moshaf.length - 1].server;
+  const moshaf = reciterData.moshaf[reciterData.moshaf.length - 1];
+  const link = moshaf.server;
+  const surah_list = moshaf.surah_list;
   currentQariData.value = {
     id: id,
     name: name,
     link: link,
+    surah_list: surah_list,
   };
   storage = null;
   localStorage.setItem(
@@ -108,6 +113,7 @@ function changeQari(event) {
       id: id,
       name: name,
       link: link,
+      surah_list: surah_list,
     })
   );
 }
